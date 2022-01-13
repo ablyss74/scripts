@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Pretty much the same sas the music script but bare bones.
+# Shuffles through a var of tv channel streams using a command
 
 
 player="flatpak run io.mpv.Mpv"
@@ -59,4 +61,3 @@ while true
 		read -s -r -p "$(header)" -n 1
 		 clear 
 	done
-
