@@ -1,4 +1,56 @@
 #!/usr/bin/env bash
+
+Example3() {
+############################################################
+#   Requires imagemagick | see imagemagick.org
+#
+#   Example 3
+#
+#   This example removes the for str ; do ; blah  and just prints a long $var
+#   Also does away with saving files to disk and uses image magicks pipe option
+#   Also trys to readjust the canvas size according to the the font size.
+#  
+#   
+#############################################################
+
+ 
+# What to print
+var="Testing one two three"
+
+# This needs some works
+#var="Testing one two three
+#four five six."
+
+#Font size, format and font.
+# Not all fonts work and you may not have this one installed.
+size=100
+format=png
+font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"
+
+# Do some math
+pdraw="1,$(($size))"
+psdraw="1,$size"
+m=$((${#var} * $size / 2))
+canvas=$(($size + $m))x$(($size * 2 - 20))
+
+	out() {
+	
+		shuf1=$(shuf -i 0-250 -n 1)
+		shuf2=$(shuf -i 0-250 -n 1)
+		shuf3=$(shuf -i 0-250 -n 1)
+		echo "<body style=\"background-color: rgb(${shuf1}, ${shuf2}, ${shuf3});\">"		
+		r=$(magick -size $canvas canvas:none -font "$font" -pointsize $size -draw "text $psdraw \'$var\'" \
+		-channel RGBA -blur 0x3 -stroke black -fill darkred -draw "text $pdraw \'$var\'" +repage ${format}: | openssl enc -base64)
+		echo "<img style=\"float: left; border-style: hidden;\" src=\"data:image/gif;base64,${r} \">"
+
+		}
+		
+			out	
+			
+echo "</body></html>"
+}
+Example3
+
 Example1() {
 ############################################################
 # 
@@ -56,7 +108,7 @@ format=png
 		done	
 echo "</body></html>"
 }
-Example1
+#Example1
 
 
 Example2() {
@@ -74,7 +126,7 @@ Example2() {
 		echo "<body style=\"background-color: rgb(${shuf1}, ${shuf2}, ${shuf3});\">"
 		magick -size 150x75 canvas:none -font "/usr/share/fonts/X11/Type1/c0648bt_.pfb" -pointsize 75 -draw "text 25,60 \'$var\'" \
 		-channel RGBA -blur 0x6 -fill yellow -stroke black -draw "text 30,55 \'$var\'" -trim +repage /tmp/$var.png
-		magick /tmp/$var.png -encipher passphrase.txt /tmp/$var.png
+
 		r=$(openssl enc -base64 -in /tmp/$var.png)
 		echo "<img style=\"border-style: hidden;\" src=\"data:image/gif;base64,${r} \">"
 	}
@@ -88,5 +140,4 @@ Example2() {
 echo "</body></html>"
 }
 #Example2
-
 
