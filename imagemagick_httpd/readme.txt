@@ -5,7 +5,7 @@
 #                                                           
 #               To run, open terminal and type             
 #	           bash ./index.bash                      
-#	      Open a modern web browser to http://localhost:1234        
+#	  Open a modern web browser to http://localhost:1234        
 #	                     
 #                                                             
 #              Edit example.bash to change things            
