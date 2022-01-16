@@ -1,5 +1,90 @@
 #!/usr/bin/env bash
 
+Example4() {
+############################################################
+#   Requires imagemagick | see imagemagick.org
+#
+#   Example 3
+#
+#   This example removes the for str ; do ; blah  and just prints a long $var
+#   Also does away with saving files to disk and uses image magicks pipe option
+#   Also trys to readjust the canvas size according to the the font size.
+#  
+#   
+#############################################################
+
+	header() {
+		shuf1=$(shuf -i 0-250 -n 1)
+		shuf2=$(shuf -i 0-250 -n 1)
+		shuf3=$(shuf -i 0-250 -n 1)
+		echo "<htm><head><title>Example</title></head>
+		<body style=\"background-color: rgb(${shuf1}, ${shuf2}, ${shuf3});\">"		
+
+		}		
+	header
+			
+	msg1() {
+	# What to print
+	var="Greeting\\\'s Earth People"
+	size=50
+	format=png
+	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"
+	# Do some math
+	pdraw="13,$(($size))"
+	psdraw="6,$size"
+	m=$((${#var} * $size / 2))
+	canvas=$(($size + $m))x$(($size * 5 - 20))		
+		r=$(magick -size $canvas canvas:none -font "$font" -pointsize $size \
+		-draw "fill limegreen  circle 100,100 120,10" \
+		-draw "text $psdraw \'$var\'" \
+		-channel RGBA -blur 0x4 -stroke black -fill darkred -draw "text $pdraw \'$var\'" +repage ${format}: | openssl enc -base64)
+		echo "<img style=\"display: block; margin-left: auto; margin-right:
+		auto; width: 60%; border-style: hidden;\" src=\"data:image/gif;base64,${r}\">"
+		}		
+	msg1
+	msg2() {
+	# What to print
+	var="We\\\'ve come to ask you a very important quesetion!"
+	size=50
+	format=png
+	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"
+	# Do some math
+	pdraw="13,$(($size))"
+	psdraw="6,$size"
+	m=$((${#var} * $size / 2))
+	canvas=$(($size + $m))x$(($size * 2 - 20))		
+		r=$(magick -size $canvas canvas:none -font "$font" -pointsize $size \
+		-draw "text $psdraw \'$var\'" \
+		-channel RGBA -blur 0x4 -stroke black -fill darkred -draw "text $pdraw \'$var\'" +repage ${format}: | openssl enc -base64)
+		echo "<img style=\"display: block; margin-left: auto; margin-right:
+		auto; width: 70%; border-style: hidden;\" src=\"data:image/gif;base64,${r}\">"
+		}		
+	msg2
+			
+	msg3() {
+	# What to print
+	var="That is we want to know the price in eggs in Alaska."
+	size=50
+	format=png
+	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"
+	# Do some math
+	pdraw="13,$(($size))"
+	psdraw="6,$size"
+	m=$((${#var} * $size / 2))
+	canvas=$(($size + $m))x$(($size * 2 - 20))		
+		r=$(magick -size $canvas canvas:none -font "$font" -pointsize $size \
+		-draw "text $psdraw \'$var\'" \
+		-channel RGBA -blur 0x4 -stroke black -fill darkred -draw "text $pdraw \'$var\'" +repage ${format}: | openssl enc -base64)
+		echo "<img style=\"display: block; margin-left: auto; margin-right:
+		auto; width: 70%; border-style: hidden;\" src=\"data:image/gif;base64,${r}\">"
+		}		
+	msg3
+					
+										
+echo "</body></html>"
+}
+Example4
+
 Example3() {
 ############################################################
 #   Requires imagemagick | see imagemagick.org
@@ -49,7 +134,7 @@ canvas=$(($size + $m))x$(($size * 2 - 20))
 			
 echo "</body></html>"
 }
-Example3
+#Example3
 
 Example1() {
 ############################################################
@@ -140,4 +225,5 @@ Example2() {
 echo "</body></html>"
 }
 #Example2
+
 
