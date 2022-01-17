@@ -4,11 +4,11 @@ Example4() {
 ############################################################
 #   Requires imagemagick | see imagemagick.org
 #
-#   Example 3
+#   Example 4
 #
-#   This example removes the for str ; do ; blah  and just prints a long $var
-#   Also does away with saving files to disk and uses image magicks pipe option
-#   Also trys to readjust the canvas size according to the the font size.
+#   Same as exampel 3 but added header() with html tags, 
+#   Added functions msg1,msg2,msg3
+#   And a green circle
 #  
 #   
 #############################################################
