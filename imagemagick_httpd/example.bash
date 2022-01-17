@@ -1,5 +1,121 @@
 #!/usr/bin/env bash
 
+Example5() {
+############################################################
+#   Requires imagemagick | see imagemagick.org
+#
+#   Example 5
+#
+#   Added font suffle and fixed some typos in image/png, and spelling.
+#  
+#   
+#############################################################
+
+
+
+### Shuffle through fonts
+sf=yes
+suffix=ttf
+	fontshuf() {
+		if [[ $sf == no ]];then
+			echo "/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf" 
+		else
+			fontarray+=($(locate *.${suffix}))
+			shuffonts=$(shuf -i 0-${#fontarray} -n 1)
+			echo ${fontarray[$shuffonts]}
+			unset fontarray
+		fi
+		}	
+
+	header() {
+		shuf1=$(shuf -i 0-250 -n 1)
+		shuf2=$(shuf -i 0-250 -n 1)
+		shuf3=$(shuf -i 0-250 -n 1)
+		echo "<htm><head><title>Example</title></head>
+		<body style=\"background-color: rgb(${shuf1}, ${shuf2}, ${shuf3});\">"		
+
+		}		
+	header
+			
+	msg1() {
+	# What to print
+	var="Greeting\\\'s Earth People"	
+	
+	# Font size, format, and type
+	size=130
+	format=png	
+	#font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"	
+	font="/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf"
+	
+	# Do some math // This is for adjusting the canvas size according to the size of the font
+	# You can see this in real time by changing the format to jpg
+	# Tweak number 
+	tweak=50 # Add / subtract to the bottom of the canvas as needed according to font size
+	pdraw="13,$size"
+	psdraw="6,$size"
+	m=$((${#var} * $size / 1))
+	canvas=$(($size + $m))x$(($size * 5 - $tweak))		
+		r=$(magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
+		-draw "fill limegreen  circle 100,100 120,10" \
+		-draw "text $psdraw \'$var\'" \
+		-channel RGBA -blur 0x4 -stroke black -fill darkred -draw "text $pdraw \'$var\'" +repage ${format}: | openssl enc -base64)
+		echo "<img style=\"display: block; margin-left: auto; margin-right:
+		auto; width: 100%; border-style: hidden;\" src=\"data:image/${format};base64,${r}\">"
+		
+		}		
+	msg1
+	msg2() {
+	# What to print
+	var="We\\\'ve come to ask you a very important question!"
+	
+	# Font size, format, and type
+	size=100
+	format=png	
+	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"	
+	
+	# Do some math // This is for adjusting the canvas size according to the size of the font
+	# You can see this in real time by changing the format to jpg
+	tweak=100 # Add / subtract to the bottom of the canvas as needed according to font size
+	pdraw="13,$size"
+	psdraw="6,$size"
+	m=$((${#var} * $size / 2))
+	canvas=$(($size + $m))x$(($size * 5 - $tweak))			
+		r=$(magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
+		-draw "text $psdraw \'$var\'" \
+		-channel RGBA -blur 0x4 -stroke black -fill darkred -draw "text $pdraw \'$var\'" +repage ${format}: | openssl enc -base64)
+		echo "<img style=\"display: block; margin-left: auto; margin-right:
+		auto; width: 80%; border-style: hidden;\" src=\"data:image/${format};base64,${r}\">"
+		}		
+	msg2
+			
+	msg3() {
+	# What to print
+	var="That is, we want to know the price of eggs in Alaska."
+		
+	# Font size, format, and type
+	size=100
+	format=png	
+	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"	
+	
+	# Do some math // This is for adjusting the canvas size according to the size of the font
+	# You can see this in real time by changing the format to jpg
+	tweak=100 # Add / subtract to the bottom of the canvas as needed according to font size
+	pdraw="13,$size"
+	psdraw="6,$size"
+	m=$((${#var} * $size / 2))
+	canvas=$(($size + $m))x$(($size * 5 - $tweak))			
+		r=$(magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
+		-draw "text $psdraw \'$var\'" \
+		-channel RGBA -blur 0x4 -stroke black -fill darkred -draw "text $pdraw \'$var\'" +repage ${format}: | openssl enc -base64)
+		echo "<img style=\"display: block; margin-left: auto; margin-right:
+		auto; width: 50%; border-style: hidden;\" src=\"data:image/${format};base64,${r}\">"
+		}		
+	msg3
+									
+echo "</body></html>"
+}
+Example5
+
 Example4() {
 ############################################################
 #   Requires imagemagick | see imagemagick.org
@@ -97,7 +213,7 @@ Example4() {
 										
 echo "</body></html>"
 }
-Example4
+#Example4
 
 Example3() {
 ############################################################
