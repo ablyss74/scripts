@@ -63,7 +63,7 @@ Example4() {
 			
 	msg3() {
 	# What to print
-	var="That is we want to know the price in eggs in Alaska."
+	var="That is we want to know the price of eggs in Alaska."
 	size=50
 	format=png
 	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"
