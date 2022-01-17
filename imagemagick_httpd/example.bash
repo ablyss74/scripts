@@ -14,7 +14,7 @@ Example5() {
 
 
 ### Shuffle through fonts
-sf=yes
+sf=no
 suffix=ttf
 	fontshuf() {
 		if [[ $sf == no ]];then
@@ -50,11 +50,11 @@ suffix=ttf
 	# Do some math // This is for adjusting the canvas size according to the size of the font
 	# You can see this in real time by changing the format to jpg
 	# Tweak number 
-	tweak=50 # Add / subtract to the bottom of the canvas as needed according to font size
+	tweak=2 # Add / subtract to the bottom of the canvas as needed according to font size
 	pdraw="13,$size"
 	psdraw="6,$size"
-	m=$((${#var} * $size / 1))
-	canvas=$(($size + $m))x$(($size * 5 - $tweak))		
+	m=$((${#var} * $size / 2))
+	canvas=$(($size + $m))x$(($size * $tweak))		
 		r=$(magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
 		-draw "fill limegreen  circle 100,100 120,10" \
 		-draw "text $psdraw \'$var\'" \
@@ -75,11 +75,11 @@ suffix=ttf
 	
 	# Do some math // This is for adjusting the canvas size according to the size of the font
 	# You can see this in real time by changing the format to jpg
-	tweak=100 # Add / subtract to the bottom of the canvas as needed according to font size
+	tweak=2 # Add / subtract to the bottom of the canvas as needed according to font size
 	pdraw="13,$size"
 	psdraw="6,$size"
 	m=$((${#var} * $size / 2))
-	canvas=$(($size + $m))x$(($size * 5 - $tweak))			
+	canvas=$(($size + $m))x$(($size * $tweak))			
 		r=$(magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
 		-draw "text $psdraw \'$var\'" \
 		-channel RGBA -blur 0x4 -stroke black -fill darkred -draw "text $pdraw \'$var\'" +repage ${format}: | openssl enc -base64)
@@ -99,16 +99,16 @@ suffix=ttf
 	
 	# Do some math // This is for adjusting the canvas size according to the size of the font
 	# You can see this in real time by changing the format to jpg
-	tweak=100 # Add / subtract to the bottom of the canvas as needed according to font size
+	tweak=2 # Add / subtract to the bottom of the canvas as needed according to font size
 	pdraw="13,$size"
 	psdraw="6,$size"
 	m=$((${#var} * $size / 2))
-	canvas=$(($size + $m))x$(($size * 5 - $tweak))			
+	canvas=$(($size + $m))x$(($size * $tweak))			
 		r=$(magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
 		-draw "text $psdraw \'$var\'" \
 		-channel RGBA -blur 0x4 -stroke black -fill darkred -draw "text $pdraw \'$var\'" +repage ${format}: | openssl enc -base64)
 		echo "<img style=\"display: block; margin-left: auto; margin-right:
-		auto; width: 50%; border-style: hidden;\" src=\"data:image/${format};base64,${r}\">"
+		auto; width: 80%; border-style: hidden;\" src=\"data:image/${format};base64,${r}\">"
 		}		
 	msg3
 									
