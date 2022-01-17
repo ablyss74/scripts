@@ -25,10 +25,13 @@ Example4() {
 			
 	msg1() {
 	# What to print
-	var="Greeting\\\'s Earth People"
+	var="Greeting\\\'s Earth People"	
+	
+	# Font size, format, and type
 	size=50
-	format=png
-	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"
+	format=png	
+	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"	
+	
 	# Do some math // This is for adjusting the canvas size according to the size of the font
 	# You can see this in real time by changing the format to jpg
 	pdraw="13,$size"
@@ -46,9 +49,12 @@ Example4() {
 	msg2() {
 	# What to print
 	var="We\\\'ve come to ask you a very important quesetion!"
+	
+	# Font size, format, and type
 	size=50
-	format=png
-	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"
+	format=png	
+	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"	
+	
 	# Do some math // This is for adjusting the canvas size according to the size of the font
 	# You can see this in real time by changing the format to jpg
 	pdraw="13,$size"
@@ -66,9 +72,12 @@ Example4() {
 	msg3() {
 	# What to print
 	var="That is we want to know the price of eggs in Alaska."
+		
+	# Font size, format, and type
 	size=50
-	format=png
-	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"
+	format=png	
+	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"	
+	
 	# Do some math // This is for adjusting the canvas size according to the size of the font
 	# You can see this in real time by changing the format to jpg
 	pdraw="13,$size"
