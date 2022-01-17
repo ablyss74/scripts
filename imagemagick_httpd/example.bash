@@ -29,8 +29,9 @@ Example4() {
 	size=50
 	format=png
 	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"
-	# Do some math
-	pdraw="13,$(($size))"
+	# Do some math // This is for adjusting the canvas size according to the size of the font
+	# You can see this in real time by changing the format to jpg
+	pdraw="13,$size"
 	psdraw="6,$size"
 	m=$((${#var} * $size / 2))
 	canvas=$(($size + $m))x$(($size * 5 - 20))		
@@ -48,8 +49,9 @@ Example4() {
 	size=50
 	format=png
 	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"
-	# Do some math
-	pdraw="13,$(($size))"
+	# Do some math // This is for adjusting the canvas size according to the size of the font
+	# You can see this in real time by changing the format to jpg
+	pdraw="13,$size"
 	psdraw="6,$size"
 	m=$((${#var} * $size / 2))
 	canvas=$(($size + $m))x$(($size * 2 - 20))		
@@ -67,8 +69,9 @@ Example4() {
 	size=50
 	format=png
 	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"
-	# Do some math
-	pdraw="13,$(($size))"
+	# Do some math // This is for adjusting the canvas size according to the size of the font
+	# You can see this in real time by changing the format to jpg
+	pdraw="13,$size"
 	psdraw="6,$size"
 	m=$((${#var} * $size / 2))
 	canvas=$(($size + $m))x$(($size * 2 - 20))		
