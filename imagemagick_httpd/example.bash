@@ -28,27 +28,29 @@ Example4() {
 	var="Greeting\\\'s Earth People"	
 	
 	# Font size, format, and type
-	size=50
+	size=100
 	format=png	
 	font="/usr/share/fonts/X11/Type1/c0648bt_.pfb"	
 	
 	# Do some math // This is for adjusting the canvas size according to the size of the font
 	# You can see this in real time by changing the format to jpg
+	# Tweak number 
+	tweak=150 # Add / subtract to the bottom of the canvas as needed according to font size
 	pdraw="13,$size"
 	psdraw="6,$size"
 	m=$((${#var} * $size / 2))
-	canvas=$(($size + $m))x$(($size * 5 - 20))		
+	canvas=$(($size + $m))x$(($size * 5 - $tweak))		
 		r=$(magick -size $canvas canvas:none -font "$font" -pointsize $size \
 		-draw "fill limegreen  circle 100,100 120,10" \
 		-draw "text $psdraw \'$var\'" \
 		-channel RGBA -blur 0x4 -stroke black -fill darkred -draw "text $pdraw \'$var\'" +repage ${format}: | openssl enc -base64)
 		echo "<img style=\"display: block; margin-left: auto; margin-right:
-		auto; width: 60%; border-style: hidden;\" src=\"data:image/gif;base64,${r}\">"
+		auto; width: 100%; border-style: hidden;\" src=\"data:image/gif;base64,${r}\">"
 		}		
 	msg1
 	msg2() {
 	# What to print
-	var="We\\\'ve come to ask you a very important quesetion!"
+	var="We\\\'ve come to ask you a very important question!"
 	
 	# Font size, format, and type
 	size=50
