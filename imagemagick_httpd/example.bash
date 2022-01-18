@@ -12,6 +12,7 @@ version6() {
 #   The core of this script uses "version() functions as a history of previous versions.
 #   Previous versions are omitted from functioning.
 #
+#   Updates in version6()
 #   Add background images.
 #   Renamed msg1, msg2 var to just msg.
 #   Add local font to override default_font
