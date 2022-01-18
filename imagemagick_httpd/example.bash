@@ -1,6 +1,209 @@
 #!/usr/bin/env bash
 
-Example5() {
+version6() {
+############################################################
+#   Technical Notes.
+#
+#   This is a little experiment to render encoded variables with socat
+#   Small footprint and lots of power.
+#   No time tracking webroot files and worrying about permissions being set or what not
+#   Easy to design a really fancy looking  web site, MEME, template, banner, etc.
+#   
+#   The core of this script uses "version() functions as a history of previous versions.
+#   Previous versions are omitted from functioning.
+#
+#   Add background images.
+#   Renamed msg1, msg2 var to just msg.
+#   Add local font to override default_font
+#   Add suffix and echofont to shuffle fonts
+#   Some fine tuning on how the canvas is sorted out
+#   
+#   Notes...
+#   The way css automaticcally adjusts the canvas will be related to how many white spaces there are.
+#   For examples, var "Test 123" will be a lot larger than var "   Test 123             "
+#   If css=no then the above does not apply.
+#
+#   fontshuffle will overide local font 
+#############################################################
+
+
+
+### Shuffle through fonts. You may want to run `locate updatedb` beforehand.  Not all fonts render for some reason.
+sf=yes #Shuffle fonts yes/no
+suffix=ttf  #What suffix to locate for font shuffle
+echofont=no  # Echo the font location
+##
+## When shuffle font is off, use a default font and local fonts.  
+## More about local fonts below.
+default_font="/home/ablyss/Downloads/fonts/ttfonts/MAGEHUNT.TTF" 
+
+css=yes  # See the note above about css yes/no option
+##
+
+	fontshuf() {
+		if [[ $sf == no ]];then
+		        [[ ! $font ]] && echo "$default_font" || echo "$font"
+		else
+			fontarray+=($(locate *.${suffix}))
+			shuffonts=$(shuf -i 0-${#fontarray} -n 1)
+			echo ${fontarray[$shuffonts]}
+			unset fontarray
+		fi
+		}	
+
+	header() {
+		shuf1=$(shuf -i 0-250 -n 1)
+		shuf2=$(shuf -i 0-250 -n 1)
+		shuf3=$(shuf -i 0-250 -n 1)
+		echo "<htm><head><title>Example</title>
+		<style>
+		</style>
+		</head>"
+		#echo "<img src=\"data:image/jpg;base64,${x}\">"
+				
+		# haven't figured out better way to print an encoded background 
+		# It is what it is ;-)
+		bash background3 
+
+		}		
+	header
+	
+	css() {
+		[[ $css != no ]] && echo "style=\"display: block; margin-left: auto; margin-right:
+		auto; width: ${size}%; border-style: hidden;\""
+		}
+			
+	msg
+	unset font
+	
+	msg() {
+	# What to print
+	var="    I dreamt,                                           "
+	
+	# Font size, format, and type
+	size=190
+	format=png	
+	font="/home/ablyss/Downloads/fonts/ttfonts/CRETINO_.TTF"   ## Local font will override default_font if set.
+	fill=black
+	strokecolor=silver	
+	strokewidth=1
+	tweak=2 
+	pdraw="6,$size"
+	psdraw="1,$size"
+	m=$((${#var} * $size / 2))
+	canvas=$(($size + $m))x$(($size * $tweak - $(($size - 30))))	
+			
+		r=$(
+		magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
+		-draw "text $psdraw \'$var\'" -channel RGBA -blur 0x4 -stroke $strokecolor -strokewidth $strokewidth -fill $fill \
+		-draw "text $pdraw \'$var\'" +repage ${format}: \
+		| openssl enc -base64
+		)
+		
+		echo "<img $(css) src=\"data:image/${format};base64,${r}\">"
+		[[ $echofont == yes ]] && echo "<div style=\"font-size: 12px\" >$(fontshuf)</div>"
+		}		
+	msg
+	unset font
+	
+	msg() {
+	# What to print
+	var="        and I saw,                                    "
+	
+	# Font size, format, and type
+	size=190
+	format=png	
+	#font="/home/ablyss/Downloads/fonts/ttfonts/CRETINO_.TTF"   ## Local font will override default_font if set.
+	fill=black
+	strokecolor=silver	
+	strokewidth=1
+	tweak=2 
+	pdraw="6,$size"
+	psdraw="1,$size"
+	m=$((${#var} * $size / 2))
+	canvas=$(($size + $m))x$(($size * $tweak - $(($size - 30))))	
+			
+		r=$(
+		magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
+		-draw "text $psdraw \'$var\'" -channel RGBA -blur 0x4 -stroke $strokecolor -strokewidth $strokewidth -fill $fill \
+		-draw "text $pdraw \'$var\'" +repage ${format}: \
+		| openssl enc -base64
+		)
+		
+		echo "<img $(css) src=\"data:image/${format};base64,${r}\">"
+		[[ $echofont == yes ]] && echo "<div style=\"font-size: 12px\" >$(fontshuf)</div>"
+		}		
+	msg
+	unset font
+			
+	msg() {
+	# What to print
+	var="    5                      "
+		
+	size=190
+	format=png	
+	#font="/home/ablyss/Downloads/fonts/ttfonts/CRETINO_.TTF"   ## Local font will override default_font if set.
+	fill=black
+	strokecolor=silver	
+	strokewidth=1
+	tweak=2 
+	pdraw="6,$size"
+	psdraw="1,$size"
+	m=$((${#var} * $size / 2))
+	canvas=$(($size + $m))x$(($size * $tweak - $(($size - 30))))	
+			
+		r=$(
+		magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
+		-draw "text $psdraw \'$var\'" -channel RGBA -blur 0x4 -stroke $strokecolor -strokewidth $strokewidth -fill $fill \
+		-draw "text $pdraw \'$var\'" +repage ${format}: \
+		| openssl enc -base64
+		)
+		
+		echo "<img $(css) src=\"data:image/${format};base64,${r}\">"
+		[[ $echofont == yes ]] && echo "<div style=\"font-size: 12px\" >$(fontshuf)</div>"
+		}		
+	msg
+	unset font
+	
+	msg() {
+	# What to print
+	var="   Remarkable Colors.                    "
+		
+	size=190
+	format=png	
+	font="/home/ablyss/Downloads/fonts/ttfonts/MAGEHUNT.TTF"
+	fill=black
+	circlefill=yellow
+	strokecolor=silver	
+	strokewidth=1
+	tweak=2 
+	pdraw="6,$size"
+	psdraw="1,$size"
+	m=$((${#var} * $size / 2))
+	canvas=$(($size + $m))x$(($size * $tweak - $(($size - 30))))	
+			
+		r=$(
+		magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
+		-draw "text $psdraw \'$var\'" -channel RGBA -blur 0x4 -stroke $strokecolor -strokewidth $strokewidth -fill $fill \
+		-draw "text $pdraw \'$var\'" +repage ${format}: \
+		| openssl enc -base64
+		)
+		
+		echo "<img $(css) src=\"data:image/${format};base64,${r}\">"
+		[[ $echofont == yes ]] && echo "<div style=\"font-size: 12px\" >$(fontshuf)</div>"
+		}		
+	msg
+	unset font
+									
+echo "</body></html>"
+}
+version6
+
+
+
+
+
+version5() {
 ############################################################
 #   Requires imagemagick | see imagemagick.org
 #
@@ -114,9 +317,9 @@ suffix=ttf
 									
 echo "</body></html>"
 }
-Example5
+#version5
 
-Example4() {
+version4() {
 ############################################################
 #   Requires imagemagick | see imagemagick.org
 #
@@ -213,9 +416,9 @@ Example4() {
 										
 echo "</body></html>"
 }
-#Example4
+#version4
 
-Example3() {
+version3() {
 ############################################################
 #   Requires imagemagick | see imagemagick.org
 #
@@ -264,9 +467,9 @@ canvas=$(($size + $m))x$(($size * 2 - 20))
 			
 echo "</body></html>"
 }
-#Example3
+#version3
 
-Example1() {
+version2() {
 ############################################################
 # 
 #   This example encrypts and decrypts a image string
@@ -274,9 +477,6 @@ Example1() {
 #   Probably a better way pipe stuff but it is what it is.
 #   
 #############################################################
-
-
-
 
 
 #  Try to give each client a unique image ID.
@@ -323,10 +523,10 @@ format=png
 		done	
 echo "</body></html>"
 }
-#Example1
+#version2
 
 
-Example2() {
+version1() {
 ############################################################
 # 
 #   This example does not give the client a unique ID
@@ -354,6 +554,8 @@ Example2() {
 		done
 echo "</body></html>"
 }
-#Example2
+#version1
+
+
 
 
