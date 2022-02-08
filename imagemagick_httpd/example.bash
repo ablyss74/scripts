@@ -12,7 +12,6 @@ version6() {
 #   The core of this script uses "version() functions as a history of previous versions.
 #   Previous versions are omitted from functioning.
 #
-#   Updates in version6()
 #   Add background images.
 #   Renamed msg1, msg2 var to just msg.
 #   Add local font to override default_font
@@ -32,11 +31,11 @@ version6() {
 ### Shuffle through fonts. You may want to run `locate updatedb` beforehand.  Not all fonts render for some reason.
 sf=yes #Shuffle fonts yes/no
 suffix=ttf  #What suffix to locate for font shuffle
-echofont=no  # Echo the font location
+echofont=yes  # Echo the font location
 ##
 ## When shuffle font is off, use a default font and local fonts.  
 ## More about local fonts below.
-default_font="/home/ablyss/Downloads/fonts/ttfonts/MAGEHUNT.TTF" 
+default_font="/usr/share/fonts/noto/Arimo-BoldItalic.ttf" 
 
 css=yes  # See the note above about css yes/no option
 ##
@@ -74,7 +73,6 @@ css=yes  # See the note above about css yes/no option
 		auto; width: ${size}%; border-style: hidden;\""
 		}
 			
-	msg
 	unset font
 	
 	msg() {
@@ -84,7 +82,7 @@ css=yes  # See the note above about css yes/no option
 	# Font size, format, and type
 	size=190
 	format=png	
-	font="/home/ablyss/Downloads/fonts/ttfonts/CRETINO_.TTF"   ## Local font will override default_font if set.
+	#font="/home/ablyss/Downloads/fonts/ttfonts/CRETINO_.TTF"   ## Local font will override default_font if set.
 	fill=black
 	strokecolor=silver	
 	strokewidth=1
@@ -172,7 +170,7 @@ css=yes  # See the note above about css yes/no option
 		
 	size=190
 	format=png	
-	font="/home/ablyss/Downloads/fonts/ttfonts/MAGEHUNT.TTF"
+	#font="/home/ablyss/Downloads/fonts/ttfonts/MAGEHUNT.TTF"
 	fill=black
 	circlefill=yellow
 	strokecolor=silver	
