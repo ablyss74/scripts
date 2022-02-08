@@ -35,7 +35,7 @@ echofont=yes  # Echo the font location
 ##
 ## When shuffle font is off, use a default font and local fonts.  
 ## More about local fonts below.
-default_font="/usr/share/fonts/noto/Arimo-BoldItalic.ttf" 
+default_font="/usr/share/fonts/X11/TTF/UbuntuMonoderivativePowerlineBold.ttf" 
 
 css=yes  # See the note above about css yes/no option
 ##
@@ -63,7 +63,7 @@ css=yes  # See the note above about css yes/no option
 				
 		# haven't figured out better way to print an encoded background 
 		# It is what it is ;-)
-		bash background3 
+		bash background2
 
 		}		
 	header
@@ -82,7 +82,7 @@ css=yes  # See the note above about css yes/no option
 	# Font size, format, and type
 	size=190
 	format=png	
-	#font="/home/ablyss/Downloads/fonts/ttfonts/CRETINO_.TTF"   ## Local font will override default_font if set.
+	font="/home/ablyss/Downloads/fonts/ttfonts/CRETINO_.TTF"   ## Local font will override default_font if set.
 	fill=black
 	strokecolor=silver	
 	strokewidth=1
