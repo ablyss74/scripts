@@ -72,13 +72,14 @@ css=yes  # See the note above about css yes/no option
 		| openssl enc -base64
 		)
        
-echo "<html><head><title></title><style></style></head><script>function myXMLHttpRequest(){if(window.XMLHttpRequest){return new XMLHttpRequest();}if (window.ActiveXObject){ return new ActiveXObject(\"Microsoft.XMLHTTP\");}return null;}function ajax_update(){toot_toot_xmlhttp = new myXMLHttpRequest ();if (toot_toot_xmlhttp) { toot_toot_xmlhttp.open (\"GET\", true);toot_toot_xmlhttp.send (\"\"); toot_toot_xmlhttp.onreadystatechange = function () {if (toot_toot_xmlhttp.readyState == 4) {if (toot_toot_xmlhttp.status == 200) { document.getElementById(\"content\").innerHTML=toot_toot_xmlhttp.responseText;}}}}setTimeout('ajax_update()', ${refresh_rate}000);}</script><body onload=ajax_update()><div id=content><script>function toggleinfo(){delete window.XMLHttpRequest; info = document.getElementById(\"pInfo1\");if (info.style.display == \"block\"){info.style.display = \"none\";} else { info.style.display = \"block\";}}</script><a href=\"javascript:toggleinfo()\">Info</a><p id=\"pInfo1\" style=\"display: none\">Font: $(fontshuf) <br>Fontsize: $size<br>Format: $format <br> Canvas: $canvas <br> Refresh Rate: $refresh_rate <br> CSS: $css <br> Fontshuffle: $sf<br><br><a href=\"/\">Close Info</a></p>
-<br><img $(css) src=\"data:image/${format};base64,${r}\"></img><br></body></html>"	       
+echo "<html><head><title></title><style></style></head><script>function myXMLHttpRequest(){if(window.XMLHttpRequest){return new XMLHttpRequest();}if (window.ActiveXObject){ return new ActiveXObject(\"Microsoft.XMLHTTP\");}return null;}function ajax_update(){toot_toot_xmlhttp = new myXMLHttpRequest ();if (toot_toot_xmlhttp) { toot_toot_xmlhttp.open (\"GET\", true);toot_toot_xmlhttp.send (\"\"); toot_toot_xmlhttp.onreadystatechange = function () {if (toot_toot_xmlhttp.readyState == 4) {if (toot_toot_xmlhttp.status == 200) { document.getElementById(\"content\").innerHTML=toot_toot_xmlhttp.responseText;}}}}setTimeout('ajax_update()', ${refresh_rate}000);}</script><body onload=ajax_update()><div id=content><script>function toggleinfo(){delete window.XMLHttpRequest; info = document.getElementById(\"pInfo1\");if (info.style.display == \"block\"){info.style.display = \"none\";} else { info.style.display = \"block\";}}</script>
+
+<p id=\"pInfo1\" style=\"display: none\">Font: $(fontshuf) <br>Fontsize: $size<br>Format: $format <br> Canvas: $canvas <br> Refresh Rate: $refresh_rate <br> CSS: $css <br> Fontshuffle: $sf<br><br><a href=\"/\">Okay, enuff info!</a></p>
+<a href=\"javascript:toggleinfo()\" title=\"Click Me\"><img $(css) src=\"data:image/${format};base64,${r}\"></img></a></body></html>"	       
 		}		
 	msg
 	unset font	
-									
-echo "</div></body></html>"
+
 }
 version6
 
