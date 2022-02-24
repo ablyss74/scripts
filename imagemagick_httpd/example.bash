@@ -63,12 +63,7 @@ css=yes  # See the note above about css yes/no option
 	size=100
 	format=gif	
 	font="/usr/lib64/enlightenment/modules/shot/intuitive.ttf"   ## Local font will override default_font if set.
-	linenumber=($var)
-	linenumber=${#linenumber[*]}
 	pdraw="1,$size"
-
-	m=$((${#var} * $size / $linenumber))
-	canvas=$(($size + $m))x$(($(($size + 2))  * $linenumber - $(($size - 30))))
 	canvas=1000x1000	
 			
 		r=$(
