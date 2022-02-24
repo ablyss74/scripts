@@ -12,16 +12,12 @@ version6() {
 #   The core of this script uses "version() functions as a history of previous versions.
 #   Previous versions are omitted from functioning.
 #
-#   Add background images.
-#   Renamed msg1, msg2 var to just msg.
-#   Add local font to override default_font
-#   Add suffix and echofont to shuffle fonts
-#   Some fine tuning on how the canvas is sorted out
+#   Version 6...
 #   
-#   Notes...
-#   The way css automaticcally adjusts the canvas will be related to how many white spaces there are.
-#   For examples, var "Test 123" will be a lot larger than var "   Test 123             "
-#   If css=no then the above does not apply.
+#   Removed the canvas math and fixed -trim flag to cut white spaces.
+#   Added ajax autofresh and info 
+#   Added message.txt which is piped into var
+
 #
 #   fontshuffle will overide local font 
 #############################################################
@@ -32,10 +28,11 @@ version6() {
 sf=yes #Shuffle fonts yes/no
 suffix=ttf  #What suffix to locate for font shuffle
 echofont=yes  # Echo the font location
+refresh_rate=2  #seconds
 ##
 ## When shuffle font is off, use a default font and local fonts.  
 ## More about local fonts below.
-default_font="/usr/share/fonts/X11/TTF/UbuntuMonoderivativePowerlineBold.ttf" 
+default_font="/usr/share/fonts/X11/TTF/ClearSans-MediumItalic.ttf" 
 
 css=yes  # See the note above about css yes/no option
 ##
@@ -51,150 +48,42 @@ css=yes  # See the note above about css yes/no option
 		fi
 		}	
 
-	header() {
-		shuf1=$(shuf -i 0-250 -n 1)
-		shuf2=$(shuf -i 0-250 -n 1)
-		shuf3=$(shuf -i 0-250 -n 1)
-		echo "<htm><head><title>Example</title>
-		<style>
-		</style>
-		</head>"
-		#echo "<img src=\"data:image/jpg;base64,${x}\">"
-				
-		# haven't figured out better way to print an encoded background 
-		# It is what it is ;-)
-		bash background2
-
-		}		
-	header
 	
 	css() {
 		[[ $css != no ]] && echo "style=\"display: block; margin-left: auto; margin-right:
-		auto; width: ${size}%; border-style: hidden;\""
+		auto; height: ${size}%; width: ${size}%; border-style: hidden;\""
 		}
 			
 	unset font
 	
 	msg() {
 	# What to print
-	var="    I dreamt,                                           "
-	
-	# Font size, format, and type
-	size=190
-	format=png	
-	font="/home/ablyss/Downloads/fonts/ttfonts/CRETINO_.TTF"   ## Local font will override default_font if set.
-	fill=black
-	strokecolor=silver	
-	strokewidth=1
-	tweak=2 
-	pdraw="6,$size"
-	psdraw="1,$size"
-	m=$((${#var} * $size / 2))
-	canvas=$(($size + $m))x$(($size * $tweak - $(($size - 30))))	
+	var="$(<message.txt)"
+		
+	size=100
+	format=gif	
+	font="/usr/lib64/enlightenment/modules/shot/intuitive.ttf"   ## Local font will override default_font if set.
+	linenumber=($var)
+	linenumber=${#linenumber[*]}
+	pdraw="1,$size"
+
+	m=$((${#var} * $size / $linenumber))
+	canvas=$(($size + $m))x$(($(($size + 2))  * $linenumber - $(($size - 30))))
+	canvas=1000x1000	
 			
 		r=$(
 		magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
-		-draw "text $psdraw \'$var\'" -channel RGBA -blur 0x4 -stroke $strokecolor -strokewidth $strokewidth -fill $fill \
-		-draw "text $pdraw \'$var\'" +repage ${format}: \
+		-draw "text $pdraw \'$var\'" -trim +repage ${format}: \
 		| openssl enc -base64
 		)
-		
-		echo "<img $(css) src=\"data:image/${format};base64,${r}\">"
-		[[ $echofont == yes ]] && echo "<div style=\"font-size: 12px\" >$(fontshuf)</div>"
+       
+echo "<html><head><title></title><style></style></head><script>function myXMLHttpRequest(){if(window.XMLHttpRequest){return new XMLHttpRequest();}if (window.ActiveXObject){ return new ActiveXObject(\"Microsoft.XMLHTTP\");}return null;}function ajax_update(){toot_toot_xmlhttp = new myXMLHttpRequest ();if (toot_toot_xmlhttp) { toot_toot_xmlhttp.open (\"GET\", true);toot_toot_xmlhttp.send (\"\"); toot_toot_xmlhttp.onreadystatechange = function () {if (toot_toot_xmlhttp.readyState == 4) {if (toot_toot_xmlhttp.status == 200) { document.getElementById(\"content\").innerHTML=toot_toot_xmlhttp.responseText;}}}}setTimeout('ajax_update()', ${refresh_rate}000);}</script><body onload=ajax_update()><div id=content><script>function toggleinfo(){delete window.XMLHttpRequest; info = document.getElementById(\"pInfo1\");if (info.style.display == \"block\"){info.style.display = \"none\";} else { info.style.display = \"block\";}}</script><a href=\"javascript:toggleinfo()\">Info</a><p id=\"pInfo1\" style=\"display: none\">Font: $(fontshuf) <br>Fontsize: $size<br>Format: $format <br> Canvas: $canvas <br> Refresh Rate: $refresh_rate <br> CSS: $css <br> Fontshuffle: $sf<br><br><a href=\"/\">Close Info</a></p>
+<br><img $(css) src=\"data:image/${format};base64,${r}\"></img><br></body></html>"	       
 		}		
 	msg
-	unset font
-	
-	msg() {
-	# What to print
-	var="        and I saw,                                    "
-	
-	# Font size, format, and type
-	size=190
-	format=png	
-	#font="/home/ablyss/Downloads/fonts/ttfonts/CRETINO_.TTF"   ## Local font will override default_font if set.
-	fill=black
-	strokecolor=silver	
-	strokewidth=1
-	tweak=2 
-	pdraw="6,$size"
-	psdraw="1,$size"
-	m=$((${#var} * $size / 2))
-	canvas=$(($size + $m))x$(($size * $tweak - $(($size - 30))))	
-			
-		r=$(
-		magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
-		-draw "text $psdraw \'$var\'" -channel RGBA -blur 0x4 -stroke $strokecolor -strokewidth $strokewidth -fill $fill \
-		-draw "text $pdraw \'$var\'" +repage ${format}: \
-		| openssl enc -base64
-		)
-		
-		echo "<img $(css) src=\"data:image/${format};base64,${r}\">"
-		[[ $echofont == yes ]] && echo "<div style=\"font-size: 12px\" >$(fontshuf)</div>"
-		}		
-	msg
-	unset font
-			
-	msg() {
-	# What to print
-	var="    5                      "
-		
-	size=190
-	format=png	
-	#font="/home/ablyss/Downloads/fonts/ttfonts/CRETINO_.TTF"   ## Local font will override default_font if set.
-	fill=black
-	strokecolor=silver	
-	strokewidth=1
-	tweak=2 
-	pdraw="6,$size"
-	psdraw="1,$size"
-	m=$((${#var} * $size / 2))
-	canvas=$(($size + $m))x$(($size * $tweak - $(($size - 30))))	
-			
-		r=$(
-		magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
-		-draw "text $psdraw \'$var\'" -channel RGBA -blur 0x4 -stroke $strokecolor -strokewidth $strokewidth -fill $fill \
-		-draw "text $pdraw \'$var\'" +repage ${format}: \
-		| openssl enc -base64
-		)
-		
-		echo "<img $(css) src=\"data:image/${format};base64,${r}\">"
-		[[ $echofont == yes ]] && echo "<div style=\"font-size: 12px\" >$(fontshuf)</div>"
-		}		
-	msg
-	unset font
-	
-	msg() {
-	# What to print
-	var="   Remarkable Colors.                    "
-		
-	size=190
-	format=png	
-	#font="/home/ablyss/Downloads/fonts/ttfonts/MAGEHUNT.TTF"
-	fill=black
-	circlefill=yellow
-	strokecolor=silver	
-	strokewidth=1
-	tweak=2 
-	pdraw="6,$size"
-	psdraw="1,$size"
-	m=$((${#var} * $size / 2))
-	canvas=$(($size + $m))x$(($size * $tweak - $(($size - 30))))	
-			
-		r=$(
-		magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
-		-draw "text $psdraw \'$var\'" -channel RGBA -blur 0x4 -stroke $strokecolor -strokewidth $strokewidth -fill $fill \
-		-draw "text $pdraw \'$var\'" +repage ${format}: \
-		| openssl enc -base64
-		)
-		
-		echo "<img $(css) src=\"data:image/${format};base64,${r}\">"
-		[[ $echofont == yes ]] && echo "<div style=\"font-size: 12px\" >$(fontshuf)</div>"
-		}		
-	msg
-	unset font
+	unset font	
 									
-echo "</body></html>"
+echo "</div></body></html>"
 }
 version6
 
@@ -233,7 +122,7 @@ suffix=ttf
 		shuf1=$(shuf -i 0-250 -n 1)
 		shuf2=$(shuf -i 0-250 -n 1)
 		shuf3=$(shuf -i 0-250 -n 1)
-		echo "<htm><head><title>Example</title></head>
+		echo "<html><head><title>Example</title></head>
 		<body style=\"background-color: rgb(${shuf1}, ${shuf2}, ${shuf3});\">"		
 
 		}		
@@ -335,7 +224,7 @@ version4() {
 		shuf1=$(shuf -i 0-250 -n 1)
 		shuf2=$(shuf -i 0-250 -n 1)
 		shuf3=$(shuf -i 0-250 -n 1)
-		echo "<htm><head><title>Example</title></head>
+		echo "<html><head><title>Example</title></head>
 		<body style=\"background-color: rgb(${shuf1}, ${shuf2}, ${shuf3});\">"		
 
 		}		
