@@ -37,16 +37,16 @@ default_font="/usr/share/fonts/X11/TTF/ClearSans-MediumItalic.ttf"
 css=yes  # See the note above about css yes/no option
 ##
 
-	fontshuf() {
+	
 		if [[ $sf == no ]];then
 		        [[ ! $font ]] && echo "$default_font" || echo "$font"
 		else
 			fontarray+=($(locate *.${suffix}))
 			shuffonts=$(shuf -i 0-${#fontarray} -n 1)
-			echo ${fontarray[$shuffonts]}
+			fvar=${fontarray[$shuffonts]}
 			unset fontarray
 		fi
-		}	
+		
 
 	
 	css() {
@@ -61,20 +61,20 @@ css=yes  # See the note above about css yes/no option
 	var="$(<message.txt)"
 		
 	size=100
-	format=gif	
+	format=png	
 	font="/usr/lib64/enlightenment/modules/shot/intuitive.ttf"   ## Local font will override default_font if set.
 	pdraw="1,$size"
 	canvas=1000x1000	
 			
 		r=$(
-		magick -size $canvas canvas:none -font "$(fontshuf)" -pointsize $size \
+		magick -size $canvas canvas:none -font "$fvar" -pointsize $size \
 		-draw "text $pdraw \'$var\'" -trim +repage ${format}: \
 		| openssl enc -base64
 		)
        
 echo "<html><head><title></title><style></style></head><script>function myXMLHttpRequest(){if(window.XMLHttpRequest){return new XMLHttpRequest();}if (window.ActiveXObject){ return new ActiveXObject(\"Microsoft.XMLHTTP\");}return null;}function ajax_update(){toot_toot_xmlhttp = new myXMLHttpRequest ();if (toot_toot_xmlhttp) { toot_toot_xmlhttp.open (\"GET\", true);toot_toot_xmlhttp.send (\"\"); toot_toot_xmlhttp.onreadystatechange = function () {if (toot_toot_xmlhttp.readyState == 4) {if (toot_toot_xmlhttp.status == 200) { document.getElementById(\"content\").innerHTML=toot_toot_xmlhttp.responseText;}}}}setTimeout('ajax_update()', ${refresh_rate}000);}</script><body onload=ajax_update()><div id=content><script>function toggleinfo(){delete window.XMLHttpRequest; info = document.getElementById(\"pInfo1\");if (info.style.display == \"block\"){info.style.display = \"none\";} else { info.style.display = \"block\";}}</script>
 
-<p id=\"pInfo1\" style=\"display: none\">Font: $(fontshuf) <br>Fontsize: $size<br>Format: $format <br> Canvas: $canvas <br> Refresh Rate: $refresh_rate <br> CSS: $css <br> Fontshuffle: $sf<br><br><a href=\"/\">Okay, enuff info!</a></p>
+<p id=\"pInfo1\" style=\"display: none\">Font: $fvar <br>Fontsize: $size<br>Format: $format <br> Canvas: $canvas <br> Refresh Rate: $refresh_rate <br> CSS: $css <br> Fontshuffle: $sf<br><br><a href=\"/\">Okay, enuff info!</a></p>
 <a href=\"javascript:toggleinfo()\" title=\"Click Me\"><img $(css) src=\"data:image/${format};base64,${r}\"></img></a></body></html>"	       
 		}		
 	msg
