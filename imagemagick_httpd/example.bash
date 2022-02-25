@@ -21,50 +21,34 @@ version6() {
 #
 #   fontshuffle will overide local font 
 #############################################################
-
-
-
-### Shuffle through fonts. You may want to run `locate updatedb` beforehand.  Not all fonts render for some reason.
-sf=yes #Shuffle fonts yes/no
-suffix=ttf  #What suffix to locate for font shuffle
-echofont=yes  # Echo the font location
-refresh_rate=2  #seconds
-##
-## When shuffle font is off, use a default font and local fonts.  
-## More about local fonts below.
-default_font="/usr/share/fonts/X11/TTF/ClearSans-MediumItalic.ttf" 
-
-css=yes  # See the note above about css yes/no option
-##
-
+	
+	msg() {
+	# What to print	
+	var="$(<message.txt)"		
+	size=100
+	format=gif      # Gif is quicker to load and easier with ajax but png is cleaner looking.
+        sf=yes          # Shuffle fonts yes/no
+        suffix=ttf      # What suffix to locate for font shuffle
+        echofont=yes    # Echo the font location
+        refresh_rate=2  # seconds
+        default_font="/usr/share/enlightenment/data/fonts/Topaz_a500_v1.0.ttf " # When shuffle font is off, use a default font and local fonts. (not really needed in this version.) 
+        css=yes         # See the note above about css yes/no option
+ 	font="/usr/share/enlightenment/data/fonts/Topaz_a500_v1.0.ttf"   ## Local font will override default_font if set.
+	pdraw="1,$size"
+	canvas=1000x1000
 	
 		if [[ $sf == no ]];then
-		        [[ ! $font ]] && echo "$default_font" || echo "$font"
+		        [[ ! $font ]] && fvar=$default_font || fvar=$font
 		else
 			fontarray+=($(locate *.${suffix}))
 			shuffonts=$(shuf -i 0-${#fontarray} -n 1)
 			fvar=${fontarray[$shuffonts]}
 			unset fontarray
-		fi
-		
-
-	
-	css() {
-		[[ $css != no ]] && echo "style=\"display: block; margin-left: auto; margin-right:
-		auto; height: ${size}%; width: ${size}%; border-style: hidden;\""
-		}
-			
-	unset font
-	
-	msg() {
-	# What to print
-	var="$(<message.txt)"
-		
-	size=100
-	format=png	
-	font="/usr/lib64/enlightenment/modules/shot/intuitive.ttf"   ## Local font will override default_font if set.
-	pdraw="1,$size"
-	canvas=1000x1000	
+		fi	
+                css() {
+	             [[ $css != no ]] && echo "style=\"display: block; margin-left: auto; margin-right:
+		                         auto; height: ${size}%; width: ${size}%; border-style: hidden;\""
+	              }		
 			
 		r=$(
 		magick -size $canvas canvas:none -font "$fvar" -pointsize $size \
