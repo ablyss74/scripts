@@ -34,7 +34,7 @@ mt() {
 rb=""
 echo "Interactive Music Thingy      "
 }
-echo -e "                   $(mt)         \n          ${BLUE}   https://github.com/ablyss74/scripts          \n            [s]${BLUE}huffle/q${BLUE}uit vol +${BLUE}/-${BLUE} [m]${BLUE}ute/[u]${BLUE}nmute${BLUE}${BLUE} ${BLUE} ${BLUE} ${BLUE} ${BLUE}    \n       \n     \n   \n \n"
+echo -e "                   $(mt)         \n          ${BLUE}   https://github.com/ablyss74/scripts          \n            [s]${BLUE}huffle/[q]${BLUE}uit vol +${BLUE}/-${BLUE} [m]${BLUE}ute/[u]${BLUE}nmute${BLUE}${BLUE} ${BLUE} ${BLUE} ${BLUE} ${BLUE}    \n       \n     \n   \n \n"
 tput rmso
 x=($(${player%} --version))
 [[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} not installed. ${BLUE}Please install it to play music :-)\\n" && exit 
