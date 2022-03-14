@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -f
 # Started Jan 2022 by me J. Beazley
 # Lots of thanks to Bash Hackers for an awesome website and tips.
 # Lots of thanks to SomaFM for streaming the best stuff on this side of the universe.
@@ -28,16 +28,16 @@ bold
 !
 
 xt() {
-echo -e "$(tput setaf $(shuf -i 21-227))I$(tput setaf $(shuf -i 21-227))n$(tput setaf $(shuf -i 21-227))t$(tput setaf $(shuf -i 21-227))e$(tput setaf $(shuf -i 21-227))r$(tput setaf $(shuf -i 21-227))a$(tput setaf $(shuf -i 21-227))c$(tput setaf $(shuf -i 21-227))t$(tput setaf $(shuf -i 21-227))i$(tput setaf $(shuf -i 21-227))v$(tput setaf $(shuf -i 21-227))e $(tput setaf $(shuf -i 21-227))M$(tput setaf $(shuf -i 21-227))u$(tput setaf $(shuf -i 21-227))s$(tput setaf $(shuf -i 21-227))i$(tput setaf $(shuf -i 21-227))c $(tput setaf $(shuf -i 21-227))T$(tput setaf $(shuf -i 21-227))h$(tput setaf $(shuf -i 21-227))i$(tput setaf $(shuf -i 21-227))n$(tput setaf $(shuf -i 21-227))g$(tput setaf $(shuf -i 21-227))y"
+echo -e "Interactive Music Thingy"
 }
 mt() {
-rb="$(tput setaf $(shuf -i 21-227))"
-echo "$(tput setaf $(shuf -i 21-227))I$(tput setaf $(shuf -i 21-227))n$(tput setaf $(shuf -i 21-227))t$(tput setaf $(shuf -i 21-227))e$(tput setaf $(shuf -i 21-227))r$(tput setaf $(shuf -i 21-227))a$(tput setaf $(shuf -i 21-227))c$(tput setaf $(shuf -i 21-227))t$(tput setaf $(shuf -i 21-227))i$(tput setaf $(shuf -i 21-227))v$(tput setaf $(shuf -i 21-227))e $(tput setaf $(shuf -i 21-227))M$(tput setaf $(shuf -i 21-227))u$(tput setaf $(shuf -i 21-227))s$(tput setaf $(shuf -i 21-227))i$(tput setaf $(shuf -i 21-227))c $(tput setaf $(shuf -i 21-227))T$(tput setaf $(shuf -i 21-227))h$(tput setaf $(shuf -i 21-227))i$(tput setaf $(shuf -i 21-227))n$(tput setaf $(shuf -i 21-227))g$(tput setaf $(shuf -i 21-227))y$(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227))"
+rb=""
+echo "Interactive Music Thingy      "
 }
-echo -e "$(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(mt) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) \n$(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) ${BLUE}$(tput setaf $(shuf -i 21-227))h$(tput setaf $(shuf -i 21-227))t$(tput setaf $(shuf -i 21-227))t$(tput setaf $(shuf -i 21-227))p$(tput setaf $(shuf -i 21-227))s$(tput setaf $(shuf -i 21-227)):$(tput setaf $(shuf -i 21-227))/$(tput setaf $(shuf -i 21-227))/$(tput setaf $(shuf -i 21-227))g$(tput setaf $(shuf -i 21-227))i$(tput setaf $(shuf -i 21-227))t$(tput setaf $(shuf -i 21-227))h$(tput setaf $(shuf -i 21-227))u$(tput setaf $(shuf -i 21-227))b$(tput setaf $(shuf -i 21-227)).$(tput setaf $(shuf -i 21-227))c$(tput setaf $(shuf -i 21-227))o$(tput setaf $(shuf -i 21-227))m$(tput setaf $(shuf -i 21-227))/$(tput setaf $(shuf -i 21-227))a$(tput setaf $(shuf -i 21-227))b$(tput setaf $(shuf -i 21-227))l$(tput setaf $(shuf -i 21-227))y$(tput setaf $(shuf -i 21-227))s$(tput setaf $(shuf -i 21-227))s$(tput setaf $(shuf -i 21-227))7$(tput setaf $(shuf -i 21-227))4$(tput setaf $(shuf -i 21-227))/$(tput setaf $(shuf -i 21-227))m$(tput setaf $(shuf -i 21-227))u$(tput setaf $(shuf -i 21-227))s$(tput setaf $(shuf -i 21-227))i$(tput setaf $(shuf -i 21-227))c$(tput setaf $(shuf -i 21-227))_$(tput setaf $(shuf -i 21-227))t$(tput setaf $(shuf -i 21-227))h$(tput setaf $(shuf -i 21-227))i$(tput setaf $(shuf -i 21-227))n$(tput setaf $(shuf -i 21-227))g$(tput setaf $(shuf -i 21-227))y$(tput setaf $(shuf -i 21-227)).$(tput setaf $(shuf -i 21-227))b$(tput setaf $(shuf -i 21-227))a$(tput setaf $(shuf -i 21-227))$(tput setaf $(shuf -i 21-227))s$(tput setaf $(shuf -i 21-227))h$(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) \n$(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) ${BLUE} ${BLUE} ${BLUE} ${BLUE} ${BLUE} $(tput setaf $(shuf -i 21-227))s${BLUE}huffle/$(tput setaf $(shuf -i 21-227))q${BLUE}uit vol $(tput setaf $(shuf -i 21-227))+${BLUE}/$(tput setaf $(shuf -i 21-227))-${BLUE} $(tput setaf $(shuf -i 21-227))m${BLUE}ute/$(tput setaf $(shuf -i 21-227))u${BLUE}nmute${BLUE} ${BLUE} ${BLUE} ${BLUE} ${BLUE} ${BLUE} ${BLUE} ${BLUE} ${BLUE} ${BLUE} $(tput setaf $(shuf -i 21-227)) \n$(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227))\n $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) \n $(tput setaf $(shuf -i 21-227)) $(tput setaf $(shuf -i 21-227)) \n$(tput setaf $(shuf -i 21-227)) \n"
+echo -e "                   $(mt)         \n          ${BLUE}   https://github.com/ablyss74/scripts          \n            [s]${BLUE}huffle/q${BLUE}uit vol +${BLUE}/-${BLUE} [m]${BLUE}ute/[u]${BLUE}nmute${BLUE}${BLUE} ${BLUE} ${BLUE} ${BLUE} ${BLUE}    \n       \n     \n   \n \n"
 tput rmso
 x=($(${player%} --version))
-[[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} not installed. ${BLUE}Please install it to play music $(tput setaf $(shuf -i 21-227)):$(tput setaf $(shuf -i 21-227))-$(tput setaf $(shuf -i 21-227)))\\n" && exit 
+[[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} not installed. ${BLUE}Please install it to play music :-)\\n" && exit 
 
 REPLY=${REPLY,,}
 [[ ! $REPLY ]] && REPLY=s
@@ -93,7 +93,7 @@ vol() {
 	for l in "$(amixer get Master)"
 		do
 		  l=${l// /_}  
- 	      l=${l/_[/ }
+ 	          l=${l/_[/ }
  		  l=${l/]_/ }
   		  l=($l)
   		  s="${l[5]}"
@@ -110,7 +110,7 @@ vol() {
   		  [[ $REPLY == - ]] && amixer -q set Master $(($soundlevel - 5))% && s=$(($soundlevel - 5))%  
   		  [[ $REPLY == m ]] && amixer -q set Master mute && s=Muted
   		  [[ $REPLY == u ]] && amixer -q set Master unmute 
-  			echo "$(tput setaf $(shuf -i 21-227))${s}"
+  			echo "${s}"
   			
 		done
 		
@@ -128,19 +128,17 @@ if [[ ${REPLY} == s ]];then
 	tr=${tr[0]}
 	(killall -1 ${player% -@})
 	($player -@ ${tr//pls\//pls} )&> /dev/null &
+	url="${pl//,/\\n *}"
+	url="${url//\ -\ /\\n * }"
+	url="${url//.\ /\\n * }"
+	url=(${url//#/\\n * })
+	echo ${url[*]} > /tmp/music_thingy.info
+=
+	
 	
 fi
-autoshuffle() {
-echo "$(tput setaf $(shuf -i 21-227))h$(tput setaf $(shuf -i 21-227))u$(tput setaf $(shuf -i 21-227))h$(tput setaf $(shuf -i 21-227))?"
 
-}
-
-nar="${playlist[$shuffle]}"
-url="${nar//,/\\n $(tput setaf $(shuf -i 21-227))*$(tput setaf $(shuf -i 21-227))}"
-url="${url//\ -\ /\\n $(tput setaf $(shuf -i 21-227))* $(tput setaf $(shuf -i 21-227))}"
-url="${url//.\ /\\n $(tput setaf $(shuf -i 21-227))* $(tput setaf $(shuf -i 21-227))}"
-url=(${url//#/\\n $(tput setaf $(shuf -i 21-227))* $(tput setaf $(shuf -i 21-227))}) 
-echo -e " * $(tput setaf $(shuf -i 21-227))${url[*]}\n $(tput setaf $(shuf -i 21-227))  * $(tput setaf $(shuf -i 21-227))T$(tput setaf $(shuf -i 21-227))o$(tput setaf $(shuf -i 21-227))t$(tput setaf $(shuf -i 21-227))a$(tput setaf $(shuf -i 21-227))l $(tput setaf $(shuf -i 21-227))P$(tput setaf $(shuf -i 21-227))l$(tput setaf $(shuf -i 21-227))a$(tput setaf $(shuf -i 21-227))y$(tput setaf $(shuf -i 21-227))l$(tput setaf $(shuf -i 21-227))i$(tput setaf $(shuf -i 21-227))s$(tput setaf $(shuf -i 21-227))t$(tput setaf $(shuf -i 21-227))s$(tput setaf $(shuf -i 21-227)) $((${#playlist[*]}-1))\\n $(tput setaf $(shuf -i 21-227))  * $(tput setaf $(shuf -i 21-227))S$(tput setaf $(shuf -i 21-227))h$(tput setaf $(shuf -i 21-227))u$(tput setaf $(shuf -i 21-227))f$(tput setaf $(shuf -i 21-227))f$(tput setaf $(shuf -i 21-227))l$(tput setaf $(shuf -i 21-227))e$(tput setaf $(shuf -i 21-227)) $(autoshuffle)\\n $(tput setaf $(shuf -i 21-227))  * $(tput setaf $(shuf -i 21-227))$(tput setaf $(shuf -i 21-227))V$(tput setaf $(shuf -i 21-227))o$(tput setaf $(shuf -i 21-227))l$(tput setaf $(shuf -i 21-227)) $(vol)\\n\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}$(xt)${BLUE}~ $ $(tput setaf $(shuf -i 21-227)):$(tput setaf $(shuf -i 21-227))-$(tput setaf $(shuf -i 21-227)))"
+echo -e " * $(</tmp/music_thingy.info) \n   * Total Playlists $((${#playlist[*]}-1))\\n   * Vol $(vol)\\n\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}$(xt)${BLUE}~ $ :-)"
 
 }	
 	[[ ${REPLY} == s ]] && echo -e "$(gp) " && return 
@@ -149,7 +147,7 @@ echo -e " * $(tput setaf $(shuf -i 21-227))${url[*]}\n $(tput setaf $(shuf -i 21
    	[[ ${REPLY} == m ]] && echo -e "$(gp) " && return 
    	[[ ${REPLY} == u ]] && echo -e "$(gp) " && return 
    	[[ ${REPLY} == q ]] && echo -e "$(gp) " && return
-   	echo -e "$(gp) $(tput setaf $(shuf -i 21-227))Invalid command $(tput setaf $(shuf -i 21-227))($(tput setaf $(shuf -i 21-227))-$(tput setaf $(shuf -i 21-227)):" 
+   	echo -e "$(gp) Invalid command (-:" 
 fi
 
 
@@ -163,5 +161,4 @@ while true
 		 [[ ${REPLY} == q ]] && echo -e "\\n\\n${BLUE}bye!\\n\\n" && killall -1 $player && break || clear
 	done
 	
-
 
