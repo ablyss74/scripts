@@ -6,6 +6,8 @@ set -f
 # Plays random playlist streams from a variable set in the script.
 # Uses mpg123 binary as the backend.
 # Uses alsa mixer for volume control.
+# Uses curl
+# mkfifo for piping https to mpg123
 
 # To run, open your favorite terminal and just type: bash ./music_thingy.bash
 # No need to make it executable. That way you can click it open with your
@@ -115,8 +117,8 @@ tput rmso
 					tr=(${pl//#/\/ })
 					tr=${tr[0]}
 					(killall -1 ${player% -@})
-					mkfifo pipe
-					(curl -L ${tr} -o pipe & $player pipe)&> /dev/null &
+					mkfifo pipe_music_thingy
+					(curl -L ${tr} -o pipe_music_thingy & $player pipe_music_thingy)&> /dev/null &
 					url="${pl//,/\\n *}"
 					url="${url//\ -\ /\\n * }"
 					url="${url//.\ /\\n * }"
