@@ -126,7 +126,7 @@ tput rmso
 					url=(${url//#/\\n * })
 					echo ${url[*]} > /tmp/music_thingy.info	
 				fi
-				echo -e " * $(</tmp/music_thingy.info) \n   * Total Playlists $((${#playlist[*]}-1))\\n   * Vol $(vol)\\n\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}Interactive Music Thingy${BLUE}~ $:-) "
+				echo -e " * $(</tmp/music_thingy.info) \n   * Total Playlists ${#playlist[*]}\\n   * Vol $(vol)\\n\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}Interactive Music Thingy${BLUE}~ $:-) "
 				}	
 
 		[[ ${REPLY} == s ]] && echo -e "$(gp)" && return 
