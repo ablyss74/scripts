@@ -33,7 +33,7 @@ bold
 !
 
 
-	echo -e "                   Interactive Music Thingy               \n             httpss://github.com/ablyss74/scripts          \n   \
+	echo -e "                   Interactive Music Thingy               \n             https://github.com/ablyss74/scripts          \n   \
         [s]huffle/[q]uit vol +/- [m]ute/[u]nmute       \n       \n     \n   \n \n"
 tput rmso
 	x=($(${player%} --version))
