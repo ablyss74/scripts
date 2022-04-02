@@ -177,7 +177,7 @@ tput rmso
 				fi				
 				if [[ ${REPLY} == l ]];then
 					
-					echo -e "${BLUE} * ${RED}Favorites...\\n$(<${favs)"
+					echo -e "${BLUE} * ${RED}Favorites...\\n$(<$favs)"
 				fi				
 				
 				if [[ ${REPLY} == d ]];then
