@@ -16,6 +16,9 @@ header() {
 
 	player="flatpak run io.mpv.Mpv"
 	player_kill="mpv"
+	favs="./.music_thingy_favorites.txt"
+	
+	
 
 	BLUE="$(tput setaf 12)"    
 	RED="$(tput setaf 9)"
@@ -34,7 +37,7 @@ bold
 
 
 	echo -e "                   Interactive Music Thingy               \n             https://github.com/ablyss74/scripts          \n   \
-        [s]huffle/[q]uit vol +/- [m]ute/[u]nmute       \n       \n     \n   \n \n"
+        [s]huffle/[q]uit   vol +/-   [h]elp Menu       \n       \n     \n   \n \n"
 tput rmso
 	x=($(${player%} --version))
 	[[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} not installed. ${BLUE}Please install it to play music :-)\\n" && exit 
@@ -113,6 +116,40 @@ tput rmso
 				} 
 
 			gp() {
+			
+				if [[ ${REPLY} == f ]];then
+					
+					mapfile playlist < $favs
+					nu="0-$((${#playlist[*]}-1))"
+					shuffle="$(shuf -i $nu -n 1)"
+					pl="${playlist[$shuffle]}"
+					tr=(${pl//#/\/ })
+					tr=${tr[0]}
+				
+				         ##########################
+					(killall -1 $player_kill)  ################### For some reason this gets spawned twice when ran as background process...
+					($player ${tr//pls\//pls} )&> /tmp/mout & ########### killing it only way I can make it work ;(
+					###########################
+					url="${pl//,/\\n *}"
+					url="${url//\ -\ /\\n * }"
+					url="${url//.\ /\\n * }"
+					url=(${url//#/\\n * })
+					echo ${url[*]} > /tmp/music_thingy.info	
+					
+				fi
+				if [[ ${REPLY} == d ]];then
+					
+					tmp=$(</tmp/music_thingy.info)
+					foo=$(<$favs)
+					echo "${foo//"$tmp"}" | sed '/^$/d' > $favs
+											
+				fi
+				if [[ ${REPLY} == a ]];then
+					fav=$(</tmp/music_thingy.info)
+					echo $fav >> $favs								
+						
+				fi
+			
 				if [[ ${REPLY} == s ]];then
 					nu="0-$((${#playlist[*]}-1))"
 					shuffle="$(shuf -i $nu -n 1)"
@@ -121,22 +158,69 @@ tput rmso
 					tr=${tr[0]}
 				
 					(killall -1 $player_kill)
-					($player ${tr//pls\//pls} )&> /dev/null &
+					($player ${tr//pls\//pls} )&> /tmp/mout &
 					url="${pl//,/\\n *}"
 					url="${url//\ -\ /\\n * }"
 					url="${url//.\ /\\n * }"
 					url=(${url//#/\\n * })
 					echo ${url[*]} > /tmp/music_thingy.info	
 				fi
-				echo -e " * $(</tmp/music_thingy.info) \n   * Total Playlists ${#playlist[*]}\\n   * Vol $(vol)\\n\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}Interactive Music Thingy${BLUE}~ $:-) "
+
+
+				
+
+				echo -e " * $(</tmp/music_thingy.info) \n   * Total Playlists ${#playlist[*]}\\n   * Vol $(vol)"
+				
+				if [[ ${REPLY} == f ]];then
+					
+					echo -e "${BLUE} * ${RED}Shuffling favorites"
+				fi				
+				if [[ ${REPLY} == l ]];then
+					
+					echo -e "${BLUE} * ${RED}Favorites...\\n$(<${favsf)"
+				fi				
+				
+				if [[ ${REPLY} == d ]];then
+
+					echo -e "${BLUE} * ${RED}Deleted from favorites"						
+				fi
+
+				if [[ ${REPLY} == a ]];then
+								
+					echo -e "${BLUE} * ${RED}Added to favorites"	
+				fi			
+				if [[ ${REPLY} == h ]];then
+								
+					echo -e "${BLUE} * ${RED} [a]  Add to favorites"
+					echo -e "${BLUE} * ${RED} [d]  Delete from favorites"	
+					echo -e "${BLUE} * ${RED} [f]  Shuffle favorites"
+					echo -e "${BLUE} * ${RED} [l]  List favorites"
+					echo -e "${BLUE} * ${RED} [s]  Shuffle all"
+					echo -e "${BLUE} * ${RED} [q]  Quit"
+					echo -e "${BLUE} * ${RED} [m]  Mute"
+					echo -e "${BLUE} * ${RED} [u]  Unmute"
+					echo -e "${BLUE} * ${RED} [+]  Vol up"
+					echo -e "${BLUE} * ${RED} [-]  Vol down"
+					echo -e "${BLUE} * ${RED} [h]  Help menu"
+				fi				
+				
+				
+					
+				echo -e "\\n\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}Interactive Music Thingy${BLUE}~ $:-) "
 				}	
 
 		[[ ${REPLY} == s ]] && echo -e "$(gp)" && return 
+		[[ ${REPLY} == h ]] && echo -e "$(gp)" && return 
+		[[ ${REPLY} == a ]] && echo -e "$(gp)" && return 
+		[[ ${REPLY} == d ]] && echo -e "$(gp)" && return 
+		[[ ${REPLY} == f ]] && echo -e "$(gp)" && return 
+     		[[ ${REPLY} == l ]] && echo -e "$(gp)" && return
    		[[ ${REPLY} == + ]] && echo -e "$(gp)" && return 
    		[[ ${REPLY} == - ]] && echo -e "$(gp)" && return 
    		[[ ${REPLY} == m ]] && echo -e "$(gp)" && return 
    		[[ ${REPLY} == u ]] && echo -e "$(gp)" && return 
    		[[ ${REPLY} == q ]] && echo -e "$(gp)" && return
+
    		echo -e "$(gp) Invalid command (-: " 
 	fi
 }
