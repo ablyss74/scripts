@@ -206,6 +206,7 @@ tput rmso
 					echo -e "${BLUE} * ${RED} [+]  Vol up"
 					echo -e "${BLUE} * ${RED} [-]  Vol down"
 					echo -e "${BLUE} * ${RED} [h]  Help menu"
+					echo -e "${BLUE} * ${RED} [c]  Clear screen"
 				fi				
 				
 				
@@ -224,6 +225,7 @@ tput rmso
    		[[ ${REPLY} == m ]] && echo -e "$(gp)" && return 
    		[[ ${REPLY} == u ]] && echo -e "$(gp)" && return 
    		[[ ${REPLY} == q ]] && echo -e "$(gp)" && return
+    		[[ ${REPLY} == c ]] && echo -e "$(gp)" && return
 
    		echo -e "$(gp) Invalid command (-: " 
 	fi
