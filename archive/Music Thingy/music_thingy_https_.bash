@@ -145,6 +145,10 @@ tput rmso
 											
 				fi
 				if [[ ${REPLY} == a ]];then
+					tmp=$(</tmp/music_thingy.info) ### Repeat the delete cmds so no duplicate entires
+					foo=$(<$favs)
+					echo "${foo//"$tmp"}" | sed '/^$/d' > $favs
+				
 					fav=$(</tmp/music_thingy.info)
 					echo $fav >> $favs								
 						
