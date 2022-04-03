@@ -4,7 +4,7 @@ set -f
 # Lots of thanks to Bash Hackers for an awesome website and tips.
 # Lots of thanks to SomaFM for streaming the best stuff on this side of the universe.
 # Plays random playlist streams from a variable set in the script.
-# Uses mpg123 binary as the backend.
+# Uses mpv via flatpak binary as the backend.
 # Uses alsa mixer for volume control.
 
 # To run, open your favorite terminal and just type: bash ./music_thingy.bash
