@@ -9,45 +9,39 @@
 set -f
 
 
-kill_music_thingy(){
-	
-	
-	mapfile pids <<< $pids
-	
+kill_music_thingy(){		
+mapfile pids <<< $pids	
 	if [[ ${#pids[*]} -gt 1 ]];then
-
-	pid0="${pids[0]}"
-	pid0=(${pid0})
-	kill -1 "${pid0[1]}"
-	
-	
-	pid1="${pids[1]}"
-	pid1=(${pid1})
-	kill -1 "${pid1[1]}" 
+		pid0="${pids[0]}"
+		pid0=(${pid0})
+		kill -1 "${pid0[1]}"		
+		pid1="${pids[1]}"
+		pid1=(${pid1})
+		kill -1 "${pid1[1]}" 
         fi
 }
 vol() {
-				for l in "$(amixer get Master)"
-					do
-		 			l=${l// /_}  
- 	          			l=${l/_[/ }
- 		 			l=${l/]_/ }
-  		  			l=($l)
-  		 			s="${l[5]}"
+for l in "$(amixer get Master)"
+	do
+		 l=${l// /_}  
+ 	         l=${l/_[/ }
+ 		 l=${l/]_/ }
+  		 l=($l)
+  		 s="${l[5]}"
   
-  					#Fix for raspberry pi *** maybe outdated 
- 		 	 		[[ ${#s} -gt 3 ]] && s="${l[6]}"  
+  		#Fix for raspberry pi *** maybe outdated 
+ 		 [[ ${#s} -gt 3 ]] && s="${l[6]}"  
 
-  		  			soundlevel=${s//%/}
-  		  			inc_sound=$(($soundlevel + 5))
-  		  			dec_sound=$(($soundlevel - 5))
+  		  soundlevel=${s//%/}
+  		  inc_sound=$(($soundlevel + 5))
+  		  dec_sound=$(($soundlevel - 5))
 
-  		  			[[ $REPLY == + ]] && amixer -q set Master $(($soundlevel + 5))% && s=$(($soundlevel + 5))%
-  		  			[[ $REPLY == - ]] && amixer -q set Master $(($soundlevel - 5))% && s=$(($soundlevel - 5))%  
-  		  			[[ $REPLY == m ]] && amixer -q set Master mute && s=Muted
-  		  			[[ $REPLY == u ]] && amixer -q set Master unmute 
-  					echo "${s}"  			
-					done
+  		  [[ $REPLY == + ]] && amixer -q set Master $(($soundlevel + 5))% && s=$(($soundlevel + 5))%
+  		  [[ $REPLY == - ]] && amixer -q set Master $(($soundlevel - 5))% && s=$(($soundlevel - 5))%  
+  		  [[ $REPLY == m ]] && amixer -q set Master mute && s=Muted
+  		  [[ $REPLY == u ]] && amixer -q set Master unmute 
+  		  echo "${s}"  			
+	done
 							
 } 
 
@@ -107,11 +101,11 @@ footer(){
 echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}Interactive Music Thingy${BLUE}~ $:-) $(xfooter) "
 }
 if [[ $REPLY == a ]];then
-			tmp=$(</tmp/music_thingy.info) ### Repeat the delete cmds so no duplicate entires
-			foo=$(<$favs)
-			echo "${foo//"$tmp"}" | sed '/^$/d' > $favs				
-			fav=$(</tmp/music_thingy.info)
-			echo $fav >> $favs			
+	tmp=$(</tmp/music_thingy.info) ### Repeat the delete cmds so no duplicate entires
+	foo=$(<$favs)
+	echo "${foo//"$tmp"}" | sed '/^$/d' > $favs				
+	fav=$(</tmp/music_thingy.info)
+	echo $fav >> $favs			
 fi
 if [[ $REPLY == l ]];then
 	echo -e "${BLUE}  ${RED}<Favorites>\\n${BLUE}$(<$favs)"
@@ -120,9 +114,9 @@ if [[ $REPLY == l ]];then
 	return
 fi
 if [[ $REPLY == d ]];then
-			tmp=$(</tmp/music_thingy.info)
-			foo=$(<$favs)
-			echo "${foo//"$tmp"}" | sed '/^$/d' > $favs				
+	tmp=$(</tmp/music_thingy.info)
+	foo=$(<$favs)
+	echo "${foo//"$tmp"}" | sed '/^$/d' > $favs				
 fi
 if [[ ${REPLY} == h ]];then
 					echo -e "${BLUE}  ${RED}<Help>\\n"				
