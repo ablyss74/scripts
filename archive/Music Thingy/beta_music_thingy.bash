@@ -119,23 +119,23 @@ if [[ $REPLY == d ]];then
 	echo "${foo//"$tmp"}" | sed '/^$/d' > $favs				
 fi
 if [[ ${REPLY} == h ]];then
-					echo -e "${BLUE}  ${RED}<Help>\\n"				
-					echo -e "${BLUE} * ${RED} [a]  Add to favorites"
-					echo -e "${BLUE} * ${RED} [d]  Delete from favorites"	
-					echo -e "${BLUE} * ${RED} [f]  Shuffle favorites"
-					echo -e "${BLUE} * ${RED} [l]  List favorites"
-					echo -e "${BLUE} * ${RED} [s]  Shuffle all"
-					echo -e "${BLUE} * ${RED} [q]  Quit"
-					echo -e "${BLUE} * ${RED} [m]  Mute"
-					echo -e "${BLUE} * ${RED} [u]  Unmute"
-					echo -e "${BLUE} * ${RED} [+]  Vol up"
-					echo -e "${BLUE} * ${RED} [-]  Vol down"
-					echo -e "${BLUE} * ${RED} [h]  Help menu"
-					echo -e "${BLUE}  ${RED}\\n  </Help>\\n${BLUE}"
-					footer
-					return
-					
+	echo -e "${BLUE}  ${RED}<Help>\\n"				
+	echo -e "${BLUE} * ${RED} [a]  Add to favorites"
+	echo -e "${BLUE} * ${RED} [d]  Delete from favorites"	
+	echo -e "${BLUE} * ${RED} [f]  Shuffle favorites"
+	echo -e "${BLUE} * ${RED} [l]  List favorites"
+	echo -e "${BLUE} * ${RED} [s]  Shuffle all"
+	echo -e "${BLUE} * ${RED} [q]  Quit"
+	echo -e "${BLUE} * ${RED} [m]  Mute"
+	echo -e "${BLUE} * ${RED} [u]  Unmute"
+	echo -e "${BLUE} * ${RED} [+]  Vol up"
+	echo -e "${BLUE} * ${RED} [-]  Vol down"
+	echo -e "${BLUE} * ${RED} [h]  Help menu"
+	echo -e "${BLUE}  ${RED}\\n  </Help>\\n${BLUE}"
+	footer
+ return					
 fi
+
 if [[ $REPLY == f ]];then	
 	mapfile playlist < $favs
 	nu="0-$((${#playlist[*]}-1))"
