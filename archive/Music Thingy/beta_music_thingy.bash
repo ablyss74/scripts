@@ -29,7 +29,7 @@ for l in "$(amixer get Master)"
   		 l=($l)
   		 s="${l[5]}"
   
-  		#Fix for raspberry pi *** maybe outdated 
+  		 #Fix for raspberry pi *** maybe outdated 
  		 [[ ${#s} -gt 3 ]] && s="${l[6]}"  
 
   		  soundlevel=${s//%/}
@@ -87,18 +87,18 @@ for l in "$(amixer get Master)"
 	
 startplaying(){
 header(){
-echo -e " * $(</tmp/music_thingy.info) \n   * Total Playlists ${#playlist[*]}\\n   * Vol $(vol)\\n"
+	echo -e " * $(</tmp/music_thingy.info) \n   * Total Playlists ${#playlist[*]}\\n   * Vol $(vol)\\n"
 }
 xfooter(){
-[[ $REPLY == f && ${#playlist[*]} != 0 ]] && echo "${RED}Shuffling Favorites${BLUE} (-:"
-[[ $REPLY == f && ${#playlist[*]} == 0 ]] && echo "${RED}Favorites is empty. Press \"s\" then \"a\" to add to favorites.${BLUE} (-:"
-[[ $REPLY == s ]] && echo "${RED}Shuffling All${BLUE} (-:"
-[[ $REPLY == a ]] && echo "${RED}Added to favorites${BLUE} (-:"	
-[[ $REPLY == d ]] && echo "${RED}Deleted from favorites${BLUE} (-:"
+	[[ $REPLY == f && ${#playlist[*]} != 0 ]] && echo "${RED}Shuffling Favorites${BLUE} (-:"
+	[[ $REPLY == f && ${#playlist[*]} == 0 ]] && echo "${RED}Favorites is empty. Press \"s\" then \"a\" to add to favorites.${BLUE} (-:"
+	[[ $REPLY == s ]] && echo "${RED}Shuffling All${BLUE} (-:"
+	[[ $REPLY == a ]] && echo "${RED}Added to favorites${BLUE} (-:"	
+	[[ $REPLY == d ]] && echo "${RED}Deleted from favorites${BLUE} (-:"
 
 }
 footer(){
-echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}Interactive Music Thingy${BLUE}~ $:-) $(xfooter) "
+	echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}Interactive Music Thingy${BLUE}~ $:-) $(xfooter) "
 }
 if [[ $REPLY == a ]];then
 	tmp=$(</tmp/music_thingy.info) ### Repeat the delete cmds so no duplicate entires
@@ -178,7 +178,7 @@ cup 10
 smso
 bold
 !
-	echo -e "${BLUE}                   Interactive Music Thingy               \n             https://github.com/ablyss74/scripts          \n   \
+echo -e "${BLUE}                   Interactive Music Thingy               \n             https://github.com/ablyss74/scripts          \n   \
         [s]huffle/[q]uit   vol +/-   [h]elp Menu       \n       \n     \n   \n \n"
         
 tput rmso
@@ -208,11 +208,11 @@ while true
 		 [[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} not installed. ${BLUE}Please install it to play music :-)\\n" && break
 		 	
 		 if [[ ${REPLY} == q ]];then
-		 echo -e "\\n\\n${BLUE}bye!\\n\\n"
-		 cleanup_thingy
-		 break		 
+			 echo -e "\\n\\n${BLUE}bye!\\n\\n"
+		 	 cleanup_thingy
+		      break		 
 		  else
-		  read -s -r -p "$(header)" -n 1	
+		  	read -s -r -p "$(header)" -n 1	
 		 fi
 		 
 		 
