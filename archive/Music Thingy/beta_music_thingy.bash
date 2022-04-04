@@ -8,8 +8,11 @@
 
 set -f
 
+cleanup_thingy(){ 
+[[ -e /tmp/music_thingy.pid ]] && kill -1 $(</tmp/music_thingy.pid) && rm /tmp/music_thingy.pid
+}
 
-cleanup_thingy(){		
+xcleanup_thingy(){		
 mapfile pids <<< $pids	
 	if [[ ${#pids[*]} -gt 1 ]];then
 		pid0="${pids[0]}"
@@ -156,7 +159,8 @@ if [[ $REPLY == f ]];then
 	tr=(${pl//\\n/\/ })
 	tr=${tr[0]}
 	cleanup_thingy
-        (exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/music_thingy.pipe & exec -a MuSiC-ThInGy- $player /tmp/music_thingy.pipe)&> /tmp/null &
+        (echo $BASHPID > /tmp/music_thingy.pid; exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/music_thingy.pipe & exec -a MuSiC-ThInGy- $player /tmp/music_thingy.pipe)&> /tmp/null &
+        echo
         url="${pl//,/\\n *}"
 	url="${url//\ -\ /\\n * }"
 	url="${url//.\ /\\n * }"
@@ -171,7 +175,7 @@ if [[ $REPLY == s || ! $REPLY ]];then
 	tr=(${pl//#/\/ })
 	tr=${tr[0]}
         cleanup_thingy
-        (exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/music_thingy.pipe & exec -a MuSiC-ThInGy- $player /tmp/music_thingy.pipe)&> /dev/null &        
+        (echo $BASHPID > /tmp/music_thingy.pid; exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/music_thingy.pipe & exec -a MuSiC-ThInGy- $player /tmp/music_thingy.pipe)&> /dev/null &        
         url="${pl//,/\\n *}"
 	url="${url//\ -\ /\\n * }"
 	url="${url//.\ /\\n * }"
@@ -204,6 +208,7 @@ startplaying
 while true
 	do
 		 player="mpg123"
+		 
 		 BLUE="$(tput setaf 12)"    
 		 RED="$(tput setaf 9)"
 		 GREEN="$(tput setaf 46)"
@@ -212,7 +217,7 @@ while true
 		 BLACK="$(tput setaf 234)" 
 		 REPLY=${REPLY,,}		 
 		 favs="./.music_thingy_favorites2.txt"
-		 pids="$(ps -u | grep MuSiC-ThInGy-)"
+		 #pids="$(ps -u | grep MuSiC-ThInGy-)"
 		 REPLY=${REPLY,,}		 
 		 x=($(${player%} --version))
 		 [[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} not installed. ${BLUE}Please install it to play music :-)\\n" && break
