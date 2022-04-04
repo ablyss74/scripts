@@ -154,7 +154,7 @@ if [[ $REPLY == f ]];then
 	tr=(${pl//\\n/\/ })
 	tr=${tr[0]}
 	kill_music_thingy
-        (exec -a MuSiC-ThIgY-iD curl -L  ${tr} -o /tmp/pipe_music_thingy & exec -a MuSiC-ThIgY-iD $player /tmp/pipe_music_thingy)&> /tmp/null &
+        (exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/pipe_music_thingy & exec -a MuSiC-ThInGy- $player /tmp/pipe_music_thingy)&> /tmp/null &
         url="${pl//,/\\n *}"
 	url="${url//\ -\ /\\n * }"
 	url="${url//.\ /\\n * }"
@@ -172,7 +172,7 @@ if [[ $REPLY == s || ! $REPLY ]];then
 	tr=(${pl//#/\/ })
 	tr=${tr[0]}
        kill_music_thingy
-       (exec -a MuSiC-ThIgY-iD curl -L  ${tr} -o /tmp/pipe_music_thingy & exec -a MuSiC-ThIgY-iD $player /tmp/pipe_music_thingy)&> /dev/null &
+       (exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/pipe_music_thingy & exec -a MuSiC-ThInGy- $player /tmp/pipe_music_thingy)&> /dev/null &
         
         url="${pl//,/\\n *}"
 	url="${url//\ -\ /\\n * }"
@@ -216,7 +216,7 @@ while true
 		 BLACK="$(tput setaf 234)" 
 		 REPLY=${REPLY,,}		 
 		 favs="./.music_thingy_favorites2.txt"
-		 pids="$(ps -u | grep MuSiC-ThIgY-iD)"
+		 pids="$(ps -u | grep MuSiC-ThInGy-)"
 		 REPLY=${REPLY,,}
 		 
 		 x=($(${player%} --version))
