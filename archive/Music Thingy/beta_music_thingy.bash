@@ -144,10 +144,8 @@ if [[ ${REPLY} == h ]];then
 					return
 					
 fi
-if [[ $REPLY == f ]];then
-	
+if [[ $REPLY == f ]];then	
 	mapfile playlist < $favs
-
 	nu="0-$((${#playlist[*]}-1))"
 	shuffle="$(shuf -i $nu -n 1)"
 	pl="${playlist[$shuffle]}"
@@ -160,26 +158,21 @@ if [[ $REPLY == f ]];then
 	url="${url//.\ /\\n * }"
 	url=(${url//#/\\n * })
 	echo ${url[*]} > /tmp/music_thingy.info	
-	
-
 fi
 
 if [[ $REPLY == s || ! $REPLY ]];then
-
         nu="0-$((${#playlist[*]}-1))"
 	shuffle="$(shuf -i $nu -n 1)"
 	pl="${playlist[$shuffle]}"
 	tr=(${pl//#/\/ })
 	tr=${tr[0]}
-       kill_music_thingy
-       (exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/pipe_music_thingy & exec -a MuSiC-ThInGy- $player /tmp/pipe_music_thingy)&> /dev/null &
-        
+        kill_music_thingy
+        (exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/pipe_music_thingy & exec -a MuSiC-ThInGy- $player /tmp/pipe_music_thingy)&> /dev/null &        
         url="${pl//,/\\n *}"
 	url="${url//\ -\ /\\n * }"
 	url="${url//.\ /\\n * }"
 	url=(${url//#/\\n * })
 	echo ${url[*]} > /tmp/music_thingy.info	
-
 fi
 
 header
