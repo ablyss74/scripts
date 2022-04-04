@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+
+# This version uses curl and pipes the https url so mpg123 can read it.
+# Also updated how the process is hungup so we don't killall processes that may or maynot be related to mpg123
+# Added favorites option to save and play favorite URLS, and also a help menu.
+
+
 set -f
 
 
@@ -177,16 +183,6 @@ footer
 }
 
 header() {
-
-
-BLUE="$(tput setaf 12)"    
-RED="$(tput setaf 9)"
-GREEN="$(tput setaf 46)"
-NORM="$(tput setaf 15)"
-ORANGE="$(tput setaf 9)" 
-BLACK="$(tput setaf 234)" 
-REPLY=${REPLY,,}
-
 tput -S <<!
 clear
 cup 10 
@@ -200,23 +196,28 @@ tput rmso
 
 [[ ! -p /tmp/pipe_music_thingy ]] && mkfifo /tmp/pipe_music_thingy
 
-
-   
-        	jobs -p > /tmp/music_thingy.pid
-                startplaying
-
-
-
-	
+jobs -p > /tmp/music_thingy.pid
+ startplaying	
 
 }
 
 while true
 	do
 		 player="mpg123"
+		 BLUE="$(tput setaf 12)"    
+		 RED="$(tput setaf 9)"
+		 GREEN="$(tput setaf 46)"
+		 NORM="$(tput setaf 15)"
+		 ORANGE="$(tput setaf 9)" 
+		 BLACK="$(tput setaf 234)" 
+		 REPLY=${REPLY,,}		 
 		 favs="./.music_thingy_favorites2.txt"
 		 pids="$(ps -u | grep MuSiC-ThIgY-iD)"
-		 REPLY=${REPLY,,}	
+		 REPLY=${REPLY,,}
+		 
+		 x=($(${player%} --version))
+		 [[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} not installed. ${BLUE}Please install it to play music :-)\\n" && break
+		 	
 		 if [[ ${REPLY} == q ]];then
 		 echo -e "\\n\\n${BLUE}bye!\\n\\n"
 		 kill_music_thingy
@@ -227,6 +228,5 @@ while true
 		 
 		 
 	done
-
 
 
