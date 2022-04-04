@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # This version uses curl and pipes the https url so mpg123 can read it.
+# This is done because mpg123 doesn't handle https request yet.
 # Also updated how the process is hungup so we don't killall processes that may or maynot be related to mpg123
 # Added favorites option to save and play favorite URLS, and also a help menu.
 
