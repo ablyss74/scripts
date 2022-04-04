@@ -17,7 +17,7 @@ mapfile pids <<< $pids
 		kill -1 "${pid0[1]}"		
 		pid1="${pids[1]}"
 		pid1=(${pid1})
-		kill -1 "${pid1[1]}" 
+		kill -1 "${pid1[1]}" 		
         fi
 }
 vol() {
@@ -101,6 +101,12 @@ footer(){
 	echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}Interactive Music Thingy${BLUE}~ $:-) $(xfooter) "
 }
 if [[ $REPLY == a ]];then
+	mapfile playlist < $favs
+	nu="0-$((${#playlist[*]}-1))"
+	shuffle="$(shuf -i $nu -n 1)"
+	pl="${playlist[$shuffle]}"
+	tr=(${pl//\\n/\/ })
+	tr=${tr[0]}
 	tmp=$(</tmp/music_thingy.info) ### Repeat the delete cmds so no duplicate entires
 	foo=$(<$favs)
 	echo "${foo//"$tmp"}" | sed '/^$/d' > $favs				
@@ -114,6 +120,12 @@ if [[ $REPLY == l ]];then
 	return
 fi
 if [[ $REPLY == d ]];then
+	mapfile playlist < $favs
+	nu="0-$((${#playlist[*]}-1))"
+	shuffle="$(shuf -i $nu -n 1)"
+	pl="${playlist[$shuffle]}"
+	tr=(${pl//\\n/\/ })
+	tr=${tr[0]}
 	tmp=$(</tmp/music_thingy.info)
 	foo=$(<$favs)
 	echo "${foo//"$tmp"}" | sed '/^$/d' > $favs				
