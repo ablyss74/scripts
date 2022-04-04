@@ -9,7 +9,7 @@
 set -f
 
 
-kill_music_thingy(){		
+cleanup_thingy(){		
 mapfile pids <<< $pids	
 	if [[ ${#pids[*]} -gt 1 ]];then
 		pid0="${pids[0]}"
@@ -143,7 +143,7 @@ if [[ $REPLY == f ]];then
 	pl="${playlist[$shuffle]}"
 	tr=(${pl//\\n/\/ })
 	tr=${tr[0]}
-	kill_music_thingy
+	cleanup_thingy
         (exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/music_thingy.pipe & exec -a MuSiC-ThInGy- $player /tmp/music_thingy.pipe)&> /tmp/null &
         url="${pl//,/\\n *}"
 	url="${url//\ -\ /\\n * }"
@@ -158,7 +158,7 @@ if [[ $REPLY == s || ! $REPLY ]];then
 	pl="${playlist[$shuffle]}"
 	tr=(${pl//#/\/ })
 	tr=${tr[0]}
-        kill_music_thingy
+        cleanup_thingy
         (exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/music_thingy.pipe & exec -a MuSiC-ThInGy- $player /tmp/music_thingy.pipe)&> /dev/null &        
         url="${pl//,/\\n *}"
 	url="${url//\ -\ /\\n * }"
@@ -209,7 +209,7 @@ while true
 		 	
 		 if [[ ${REPLY} == q ]];then
 		 echo -e "\\n\\n${BLUE}bye!\\n\\n"
-		 kill_music_thingy
+		 cleanup_thingy
 		 break		 
 		  else
 		  read -s -r -p "$(header)" -n 1	
