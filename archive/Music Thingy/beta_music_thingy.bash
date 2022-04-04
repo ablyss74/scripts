@@ -191,7 +191,6 @@ startplaying
 
 while true
 	do
-
 		 player="mpg123"
 		 BLUE="$(tput setaf 12)"    
 		 RED="$(tput setaf 9)"
@@ -202,8 +201,7 @@ while true
 		 REPLY=${REPLY,,}		 
 		 favs="./.music_thingy_favorites2.txt"
 		 pids="$(ps -u | grep MuSiC-ThInGy-)"
-		 REPLY=${REPLY,,}
-		 
+		 REPLY=${REPLY,,}		 
 		 x=($(${player%} --version))
 		 [[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} not installed. ${BLUE}Please install it to play music :-)\\n" && break
 		 	
@@ -213,9 +211,7 @@ while true
 		      break		 
 		  else
 		  	read -s -r -p "$(header)" -n 1	
-		 fi
-		 
-		 
+		 fi	 
 	done
 
 
