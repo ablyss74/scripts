@@ -49,7 +49,8 @@ vol() {
   		  			[[ $REPLY == m ]] && amixer -q set Master mute && s=Muted
   		  			[[ $REPLY == u ]] && amixer -q set Master unmute 
   					echo "${s}"  			
-					done		
+					done
+							
 } 
 
 	playlist="https://ice1.somafm.com/7soul-128-mp3#Seven Inch Soul - Vintage soul tracks from the original 45 RPM vinyl.
@@ -94,20 +95,25 @@ vol() {
 	
 startplaying(){
 header(){
-echo -e " * $(</tmp/music_thingy.info) \n   * Total Playlists ${#playlist[*]}\\n   * Vol $(vol)\\n$([[ $REPLY == f ]] && echo "   * Shuffling Favorites")"
+echo -e " * $(</tmp/music_thingy.info) \n   * Total Playlists ${#playlist[*]}\\n   * Vol $(vol)\\n"
+}
+xfooter(){
+[[ $REPLY == f && ${#playlist[*]} != 0 ]] && echo "${RED}Shuffling Favorites${BLUE} (-:"
+[[ $REPLY == f && ${#playlist[*]} == 0 ]] && echo "${RED}Favorites is empty. Press \"s\" then \"a\" to add to favorites.${BLUE} (-:"
+[[ $REPLY == s ]] && echo "${RED}Shuffling All${BLUE} (-:"
+[[ $REPLY == a ]] && echo "${RED}Added to favorites${BLUE} (-:"	
+[[ $REPLY == d ]] && echo "${RED}Deleted from favorites${BLUE} (-:"
+
 }
 footer(){
-echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}Interactive Music Thingy${BLUE}~ $:-) "
+echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}Interactive Music Thingy${BLUE}~ $:-) $(xfooter) "
 }
 if [[ $REPLY == a ]];then
-			echo -e "${BLUE} * ${RED}Added to favorites${BLUE} "	
 			tmp=$(</tmp/music_thingy.info) ### Repeat the delete cmds so no duplicate entires
 			foo=$(<$favs)
-			echo "${foo//"$tmp"}" | sed '/^$/d' > $favs
-				
+			echo "${foo//"$tmp"}" | sed '/^$/d' > $favs				
 			fav=$(</tmp/music_thingy.info)
-			echo $fav >> $favs
-			
+			echo $fav >> $favs			
 fi
 if [[ $REPLY == l ]];then
 	echo -e "${BLUE}  ${RED}<Favorites>\\n${BLUE}$(<$favs)"
@@ -116,12 +122,9 @@ if [[ $REPLY == l ]];then
 	return
 fi
 if [[ $REPLY == d ]];then
-			echo -e "${BLUE} * ${RED}Deleted from favorites${BLUE}"	
 			tmp=$(</tmp/music_thingy.info)
 			foo=$(<$favs)
-			echo "${foo//"$tmp"}" | sed '/^$/d' > $favs
-			
-			
+			echo "${foo//"$tmp"}" | sed '/^$/d' > $favs				
 fi
 if [[ ${REPLY} == h ]];then
 					echo -e "${BLUE}  ${RED}<Help>\\n"				
@@ -142,22 +145,23 @@ if [[ ${REPLY} == h ]];then
 					
 fi
 if [[ $REPLY == f ]];then
-
+	
 	mapfile playlist < $favs
+
 	nu="0-$((${#playlist[*]}-1))"
 	shuffle="$(shuf -i $nu -n 1)"
 	pl="${playlist[$shuffle]}"
 	tr=(${pl//\\n/\/ })
 	tr=${tr[0]}
 	kill_music_thingy
-        (exec -a MuSiC-ThIgY-iD curl -L  ${tr} -o /tmp/pipe_music_thingy & exec -a MuSiC-ThIgY-iD $player /tmp/pipe_music_thingy)&> /dev/null &
+        (exec -a MuSiC-ThIgY-iD curl -L  ${tr} -o /tmp/pipe_music_thingy & exec -a MuSiC-ThIgY-iD $player /tmp/pipe_music_thingy)&> /tmp/null &
         url="${pl//,/\\n *}"
 	url="${url//\ -\ /\\n * }"
 	url="${url//.\ /\\n * }"
 	url=(${url//#/\\n * })
 	echo ${url[*]} > /tmp/music_thingy.info	
-	echo -e " * $(</tmp/music_thingy.info) \n   * Total Favorites ${#playlist[*]}\\n   * Vol $(vol)\\n$([[ $REPLY == f ]] && echo "   * ${RED}Shuffling Favorites${BLUE}")\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}Interactive Music Thingy${BLUE}~ $:-) "
-       return
+	
+
 fi
 
 if [[ $REPLY == s || ! $REPLY ]];then
@@ -175,8 +179,7 @@ if [[ $REPLY == s || ! $REPLY ]];then
 	url="${url//.\ /\\n * }"
 	url=(${url//#/\\n * })
 	echo ${url[*]} > /tmp/music_thingy.info	
-	echo -e " * $(</tmp/music_thingy.info) \n   * Total Playlists ${#playlist[*]}\\n   * Vol $(vol)\\n$([[ $REPLY == s ]] && echo "   * ${RED}Shuffling All${BLUE}")\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}Interactive Music Thingy${BLUE}~ $:-) "
-	return
+
 fi
 
 header
