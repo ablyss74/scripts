@@ -18,14 +18,12 @@ kill_music_thingy(){
 
 	pid0="${pids[0]}"
 	pid0=(${pid0})
-	echo "${pid0[1]}" > /tmp/music_thingy.pid0
+	kill -1 "${pid0[1]}"
 	
 	
 	pid1="${pids[1]}"
 	pid1=(${pid1})
-	echo "${pid1[1]}" > /tmp/music_thingy.pid1
-	
-        kill -1 $(</tmp/music_thingy.pid0) && kill -1 $(</tmp/music_thingy.pid1) && [[ -e /tmp/music_thingy.pid ]] && rm /tmp/music_thingy.pid
+	kill -1 "${pid1[1]}" 
         fi
 }
 vol() {
@@ -152,7 +150,7 @@ if [[ $REPLY == f ]];then
 	tr=(${pl//\\n/\/ })
 	tr=${tr[0]}
 	kill_music_thingy
-        (exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/pipe_music_thingy & exec -a MuSiC-ThInGy- $player /tmp/pipe_music_thingy)&> /tmp/null &
+        (exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/music_thingy.pipe & exec -a MuSiC-ThInGy- $player /tmp/music_thingy.pipe)&> /tmp/null &
         url="${pl//,/\\n *}"
 	url="${url//\ -\ /\\n * }"
 	url="${url//.\ /\\n * }"
@@ -167,7 +165,7 @@ if [[ $REPLY == s || ! $REPLY ]];then
 	tr=(${pl//#/\/ })
 	tr=${tr[0]}
         kill_music_thingy
-        (exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/pipe_music_thingy & exec -a MuSiC-ThInGy- $player /tmp/pipe_music_thingy)&> /dev/null &        
+        (exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/music_thingy.pipe & exec -a MuSiC-ThInGy- $player /tmp/music_thingy.pipe)&> /dev/null &        
         url="${pl//,/\\n *}"
 	url="${url//\ -\ /\\n * }"
 	url="${url//.\ /\\n * }"
@@ -191,15 +189,15 @@ bold
         
 tput rmso
 
-[[ ! -p /tmp/pipe_music_thingy ]] && mkfifo /tmp/pipe_music_thingy
+[[ ! -p /tmp/music_thingy.pipe ]] && mkfifo /tmp/music_thingy.pipe
 
-jobs -p > /tmp/music_thingy.pid
- startplaying	
+startplaying	
 
 }
 
 while true
 	do
+
 		 player="mpg123"
 		 BLUE="$(tput setaf 12)"    
 		 RED="$(tput setaf 9)"
