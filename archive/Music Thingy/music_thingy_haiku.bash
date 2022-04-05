@@ -10,18 +10,7 @@ cleanup_thingy(){
 [[ -e /tmp/music_thingy.pid ]] && kill -1 $(</tmp/music_thingy.pid) && rm /tmp/music_thingy.pid
 }
 
-xcleanup_thingy(){		
-mapfile pids <<< $pids	
-	if [[ ${#pids[*]} -gt 1 ]];then
-		pid0="${pids[0]}"
-		pid0=(${pid0})
-		kill -1 "${pid0[1]}"		
-		pid1="${pids[1]}"
-		pid1=(${pid1})
-		kill -1 "${pid1[1]}" 		
-        fi
-}
- 
+
 
 	playlist="https://somafm.com/7soul.pls#Seven Inch Soul - Vintage soul tracks from the original 45 RPM vinyl.
 	https://somafm.com/beatblender.pls#Beat Blender - A late night blend of deep-house and downtempo chill.
@@ -173,8 +162,6 @@ echo -e "${BLUE}                   Interactive Music Thingy               \n    
         [s]huffle/[q]uit             [h]elp Menu       \n       \n     \n   \n \n"
         
 tput rmso
-
-[[ ! -p /tmp/music_thingy.pipe ]] && mkfifo /tmp/music_thingy.pipe
 
 startplaying	
 
