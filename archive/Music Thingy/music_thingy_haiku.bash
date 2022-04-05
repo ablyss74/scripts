@@ -30,7 +30,7 @@ cleanup_thingy(){
 	https://somafm.com/gsclassic.pls#Groove Salad Classic - The classic (early 2000s) version of a nicely chilled plate of ambient/downtempo beats and grooves.
 	https://somafm.com/illstreet.pls#Illinois Street Lounge - Classic bachelor pad, playful exotica and vintage music of tomorrow.
 	https://somafm.com/indiepop.pls#Indie Pop Rocks! - New and classic favorite indie pop tracks.
-	http://somafm.com/jollysoul.pls#Jolly Ol' Soul - Where we cut right to the soul of the season.
+	https://somafm.com/jollysoul.pls#Jolly Ol' Soul - Where we cut right to the soul of the season.
 	https://somafm.com/live.pls#SomaFM Live - Special Live Events and rebroadcasts of past live events.
 	https://somafm.com/lush.pls#Lush - Sensuous and mellow female vocals, many with an electronic influence.
 	https://somafm.com/metal.pls#Metal Detector - From black to doom, prog to sludge, thrash to post, stoner to crossover, punk to industrial.
