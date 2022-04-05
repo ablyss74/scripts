@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# 
-# Slightly modified for Haiku OS
-#
-# This version uses mpv.
+
+# This version uses curl and pipes the https url so mpg123 can read it.
+# This is done because mpg123 doesn't handle https request yet.
+# Also updated how the process is hungup so we don't killall processes that may or maynot be related to mpg123
 # Added favorites option to save and play favorite URLS, and also a help menu.
 
 
@@ -188,8 +188,9 @@ while true
 		 NORM="$(tput setaf 15)"
 		 ORANGE="$(tput setaf 9)" 
 		 BLACK="$(tput setaf 234)" 
-		 REPLY=${REPLY,,}		 
-		 favs="./.music_thingy_favorites2.txt"
+		 REPLY=${REPLY,,}	
+		 [[ ! -e $HOME/config/settings/music_thingy ]] && mkdir $HOME/config/settings/music_thingy 	 
+		 favs="$HOME/config/settings/music_thingy/music_thingy_favorites"
 		 #pids="$(ps -u | grep MuSiC-ThInGy-)"
 		 REPLY=${REPLY,,}		 
 		 x=($(${player%} --version))
