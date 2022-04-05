@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# To run type `bash beta_music_thingy.bash` in Terminal
 # Slightly modified for Haiku OS
 # Uses MPV as the backend
 
