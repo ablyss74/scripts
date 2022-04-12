@@ -160,7 +160,7 @@ if [[ $REPLY == f ]];then
 	tr=${tr[0]}
 	cleanup_thingy
         (echo $BASHPID > /tmp/music_thingy.pid; exec -a MuSiC-ThInGy- curl -L  ${tr} -o /tmp/music_thingy.pipe & exec -a MuSiC-ThInGy- $player /tmp/music_thingy.pipe)&> /tmp/null &
-        echo
+        #echo
         url="${pl//,/\\n *}"
 	url="${url//\ -\ /\\n * }"
 	url="${url//.\ /\\n * }"
@@ -207,8 +207,7 @@ startplaying
 
 while true
 	do
-		 player="mpg123"
-		 
+		 player="mpg123"		 
 		 BLUE="$(tput setaf 12)"    
 		 RED="$(tput setaf 9)"
 		 GREEN="$(tput setaf 46)"
@@ -217,10 +216,9 @@ while true
 		 BLACK="$(tput setaf 234)" 
 		 REPLY=${REPLY,,}		 
 		 favs="./.music_thingy_favorites2.txt"
-		 #pids="$(ps -u | grep MuSiC-ThInGy-)"
-		 REPLY=${REPLY,,}		 
+		 #pids="$(ps -u | grep MuSiC-ThInGy-)"	 
 		 x=($(${player%} --version))
-		 [[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} not installed. ${BLUE}Please install it to play music :-)\\n" && break
+		 [[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} no installed. ${BLUE}Please install it to play music :-)\\n" && break
 		 	
 		 if [[ ${REPLY} == q ]];then
 			 echo -e "\\n\\n${BLUE}bye!\\n\\n"
@@ -230,5 +228,4 @@ while true
 		  	read -s -r -p "$(header)" -n 1	
 		 fi	 
 	done
-
 
