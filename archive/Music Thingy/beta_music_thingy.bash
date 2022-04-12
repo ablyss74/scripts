@@ -218,7 +218,7 @@ while true
 		 favs="./.music_thingy_favorites2.txt"
 		 #pids="$(ps -u | grep MuSiC-ThInGy-)"	 
 		 x=($(${player%} --version))
-		 [[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} no installed. ${BLUE}Please install it to play music :-)\\n" && break
+		 [[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} not installed. ${BLUE}Please install it to play music :-)\\n" && break
 		 	
 		 if [[ ${REPLY} == q ]];then
 			 echo -e "\\n\\n${BLUE}bye!\\n\\n"
