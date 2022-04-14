@@ -105,7 +105,7 @@ $nversion \
 --silent
 echo "
 Installation done.
-Now type startx or sudo systemctl set-default graphical.target"
+Now type startx or sudo systemctl set-default graphical.target and reboot."
 
 break 
 
@@ -125,7 +125,7 @@ sed -i '/^include \/etc\/ld\.so\.conf\.d\/\*\.conf$/d' /etc/ld.so.conf
 rm -v /etc/X11/xorg.conf.d/nvidia-files-opt.conf
 clear
 /opt/nvidia/bin/nvidia-uninstall
-echo "Removed done.  Reboot."
+echo "Remove done.  Reboot."
 		      	break 
 		  else
 		  	read -s -r -p "$(int)" -n 1	
