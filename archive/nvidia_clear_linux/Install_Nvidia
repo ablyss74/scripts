@@ -1,0 +1,134 @@
+#!/usr/bin/env bash
+
+
+nversion="./NVIDIA-Linux-x86_64-510.60.02.run"
+
+
+int(){
+
+
+if [[ ! $REPLY  ]];then
+tput -S <<!
+clear
+bold
+!
+	echo "Commands: x=pre_instsall, reboot, i=install. In that order. "
+	echo ""
+	echo "          Other commands are \"q\" for quiting this installer
+	  and the command: \"r\" for removing nvidia install."
+	echo "	  Don't forget to run flatpak update after install."
+	echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}${BLUE}$HOSTNAME~ # "
+
+fi
+}
+
+
+while true
+	do		 	
+		 if [[ ${REPLY} == q ]];then
+			 echo -e "\\n\\n${BLUE}bye!\\n\\n"		 	
+		      break	
+elif [[ $REPLY == x ]];then
+
+echo "Starting pre_install..."
+
+mkdir -p /etc/kernel/cmdline-removal.d/
+echo "intel_iommu=igfx_off" | tee /etc/kernel/cmdline-removal.d/intel-iommu.conf
+##
+tee /etc/systemd/system/fix-nvidia-libGL-trigger.service > /dev/null <<'EOF'
+[Unit]
+Description=Fixes libGL symlinks for the NVIDIA proprietary driver
+BindsTo=update-triggers.target
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/ln -sfv /opt/nvidia/lib/libGL.so.1 /usr/lib/libGL.so.1
+ExecStart=/usr/bin/ln -sfv /opt/nvidia/lib32/libGL.so.1 /usr/lib32/libGL.so.1
+EOF
+##
+
+systemctl daemon-reload
+systemctl add-wants update-triggers.target fix-nvidia-libGL-trigger.service
+
+swupd bundle-add kernel-native-dkms
+clr-boot-manager update
+
+mkdir /etc/modprobe.d
+
+printf "blacklist nouveau \noptions nouveau modeset=0 \n" | tee --append /etc/modprobe.d/disable-nouveau.conf
+
+echo "include /etc/ld.so.conf.d/*.conf" |  tee --append /etc/ld.so.conf
+
+mkdir /etc/ld.so.conf.d
+printf "/opt/nvidia/lib \n/opt/nvidia/lib32 \n" | tee --append /etc/ld.so.conf.d/nvidia.conf
+
+ldconfig
+
+mkdir -p /etc/X11/xorg.conf.d/
+tee /etc/X11/xorg.conf.d/nvidia-files-opt.conf > /dev/null <<'EOF'
+Section "Files"
+        ModulePath      "/usr/lib64/xorg/modules"
+        ModulePath      "/opt/nvidia/lib64/xorg/modules"
+EndSection
+EOF
+systemctl set-default multi-user.target
+echo "Post install done.
+Reboot required.  Run this installer again and enter the \"i\" command."
+
+break
+
+
+elif [[ $REPLY == i ]];then
+[[ ! -e /var/lib/dkms ]] && mkdir -v /var/lib/dkms
+	
+	echo "Installing ...
+	This may take a minute or two...
+	
+	"
+$nversion \
+--utility-prefix=/opt/nvidia \
+--opengl-prefix=/opt/nvidia \
+--compat32-prefix=/opt/nvidia \
+--compat32-libdir=lib32 \
+--x-prefix=/opt/nvidia \
+--x-module-path=/opt/nvidia/lib64/xorg/modules \
+--x-library-path=/opt/nvidia/lib64 \
+--x-sysconfig-path=/etc/X11/xorg.conf.d \
+--documentation-prefix=/opt/nvidia \
+--application-profile-path=/etc/nvidia/nvidia-application-profiles-rc.d \
+--no-precompiled-interface \
+--no-nvidia-modprobe \
+--no-distro-scripts \
+--force-libglx-indirect \
+--glvnd-egl-config-path=/etc/glvnd/egl_vendor.d \
+--egl-external-platform-config-path=/etc/egl/egl_external_platform.d  \
+--dkms \
+--silent
+echo "
+Installation done.
+Now type startx or sudo systemctl set-default graphical.target"
+
+break 
+
+
+elif [[ $REPLY == r ]];then
+#echo "Remove disabled"
+#exit
+echo "Removing files..."
+rm -v /etc/kernel/cmdline-removal.d/intel-iommu.conf
+rm -v /etc/systemd/system/fix-nvidia-libGL-trigger.service
+rm -v /etc/systemd/system/update-triggers.target.wants/fix-nvidia-libGL-trigger.service
+systemctl daemon-reload
+rm -v /etc/modprobe.d/disable-nouveau.conf
+rm -v /etc/ld.so.conf.d/nvidia.conf
+ldconfig
+sed -i '/^include \/etc\/ld\.so\.conf\.d\/\*\.conf$/d' /etc/ld.so.conf
+rm -v /etc/X11/xorg.conf.d/nvidia-files-opt.conf
+clear
+/opt/nvidia/bin/nvidia-uninstall
+echo "Removed done.  Reboot."
+		      	break 
+		  else
+		  	read -s -r -p "$(int)" -n 1	
+		 fi	 
+	done
+
