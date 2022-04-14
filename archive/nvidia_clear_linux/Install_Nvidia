@@ -15,7 +15,7 @@ bold
 	echo "Commands: x=pre_instsall, reboot, i=install. In that order. "
 	echo ""
 	echo "          Other commands are \"q\" for quiting this installer
-	  and the command: \"r\" for removing nvidia install."
+	  and the command: \"r\" for removing nvidia and config files."
 	echo "	  Don't forget to run flatpak update after install."
 	echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}${BLUE}$HOSTNAME~ # "
 
