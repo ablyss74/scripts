@@ -8,11 +8,11 @@
 
 set -f
 
-cleanup_thingy(){ 
+xcleanup_thingy(){ 
 [[ -e /tmp/music_thingy.pid ]] && kill -1 $(</tmp/music_thingy.pid) && rm /tmp/music_thingy.pid
 }
 
-xcleanup_thingy(){		
+cleanup_thingy(){		
 mapfile pids <<< $pids	
 	if [[ ${#pids[*]} -gt 1 ]];then
 		pid0="${pids[0]}"
@@ -216,7 +216,7 @@ while true
 		 BLACK="$(tput setaf 234)" 
 		 REPLY=${REPLY,,}		 
 		 favs="./.music_thingy_favorites2.txt"
-		 #pids="$(ps -u | grep MuSiC-ThInGy-)"	 
+		 pids="$(ps -u | grep MuSiC-ThInGy-)"	 
 		 x=($(${player%} --version))
 		 [[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} not installed. ${BLUE}Please install it to play music :-)\\n" && break
 		 	
