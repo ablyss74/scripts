@@ -17,7 +17,7 @@ bold
 	echo "          Other commands are \"q\" for quiting this installer
 	  and the command: \"r\" for removing nvidia and config files."
 	echo "	  Don't forget to run flatpak update after install."
-	echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}${BLUE}$HOSTNAME~ # 
+	echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}${BLUE}$HOSTNAME~ #" 
 
 fi
 }
