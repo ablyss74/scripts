@@ -71,7 +71,7 @@ Section "Files"
 EndSection
 EOF
 systemctl set-default multi-user.target
-echo "Post install done.
+echo "Pre install done.
 Reboot required.  Run this installer again and enter the \"i\" command."
 
 break
