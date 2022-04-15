@@ -12,12 +12,12 @@ tput -S <<!
 clear
 bold
 !
-	echo "Commands: x=pre_install, reboot, i=install. In that order. "
+	echo "Commands: x=pre_instsall, reboot, i=install. In that order. "
 	echo ""
-	echo -e "Other commands are \"q\" for quiting this installer and the command: \"r\" for removing nvidia\\nand config files and use default video driver."
-	echo ""
+	echo "          Other commands are \"q\" for quiting this installer
+	  and the command: \"r\" for removing nvidia and config files."
 	echo "	  Don't forget to run flatpak update after install."
-	echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}${BLUE}$HOSTNAME~ # "
+	echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}${BLUE}$HOSTNAME~ # 
 
 fi
 }
