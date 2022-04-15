@@ -17,7 +17,15 @@ bold
 	echo "          Other commands are \"q\" for quiting this installer
 	  and the command: \"r\" for removing nvidia and config files."
 	echo "	  Don't forget to run flatpak update after install."
-	echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}${BLUE}$HOSTNAME~ #" 
+	echo ""
+	checknv="$(file $nversion)"
+	checknv=($checknv)
+	checknv=${checknv//\:/}	
+	[[ ${checknv[1]} == POSIX ]] && echo "          Found:${checknv[0]}"
+
+
+	
+	echo -e "\\n\\n\\n\\n\\n${RED}${USER}${BLUE}@${ORANGE}${BLUE}$HOSTNAME~ # ~~ waiting for command ~~" 
 
 fi
 }
@@ -127,8 +135,13 @@ clear
 /opt/nvidia/bin/nvidia-uninstall
 echo "Remove done.  Reboot."
 		      	break 
+		  		      	
 		  else
+checknv="$(file $nversion)"
+checknv=($checknv)
+checknv=${checknv//\:/}	
+[[ ${checknv[1]} != POSIX ]] && echo -e "          Nvidia Driver check failed.\\n          Did you download it and update the nversion variable in this script?"  && break		  
+		  
 		  	read -s -r -p "$(int)" -n 1	
 		 fi	 
 	done
-
