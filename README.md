@@ -1,0 +1,1 @@
+# scripts maninly in bash.  
