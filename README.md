@@ -1,1 +1,1 @@
-# scripts maninly in bash.  
+# scripts mainly in bash.  
