@@ -195,7 +195,7 @@ smso
 bold
 !
 echo -e "${BLUE}                   Interactive Music Thingy               \n             https://github.com/ablyss74/scripts          \n   \
-        [s]huffle/[q]uit   vol +/-   [h]elp Menu       \n       \n     \n   \n \n"
+        [S]huffle/[Q]uit   Vol +/-   [H]elp Menu       \n       \n     \n   \n \n"
         
 tput rmso
 
