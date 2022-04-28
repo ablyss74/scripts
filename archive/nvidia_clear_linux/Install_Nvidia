@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-nversion="./NVIDIA-Linux-x86_64-510.60.02.run"
+nversion="./NVIDIA-Linux-x86_64-510.68.02.run"
 
 
 int(){
@@ -95,7 +95,7 @@ echo ""
 echo "Installing ...
 This may take a minute or two...
 "	
-$nversion \
+bash $nversion \
 --utility-prefix=/opt/nvidia \
 --opengl-prefix=/opt/nvidia \
 --compat32-prefix=/opt/nvidia \
