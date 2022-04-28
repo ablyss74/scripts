@@ -37,9 +37,9 @@ while true
 			 echo -e "\\n\\n${BLUE}bye!\\n\\n"		 	
 		      break	
 elif [[ $REPLY == x ]];then
-
-echo "Starting pre_install..."
-
+clear
+echo "Starting Pre_install..."
+echo ""
 mkdir -p /etc/kernel/cmdline-removal.d/
 echo "intel_iommu=igfx_off" | tee /etc/kernel/cmdline-removal.d/intel-iommu.conf
 ##
@@ -66,7 +66,8 @@ printf "blacklist nouveau \noptions nouveau modeset=0 \n" | tee --append /etc/mo
 
 echo "include /etc/ld.so.conf.d/*.conf" |  tee --append /etc/ld.so.conf
 
-mkdir /etc/ld.so.conf.d
+[[ ! -e /etc/ld.so.conf.d ]] && mkdir /etc/ld.so.conf.d
+[[ -e /etc/ld.so.conf.d/nvidia.conf ]] && rm /etc/ld.so.conf.d/nvidia.conf
 printf "/opt/nvidia/lib \n/opt/nvidia/lib32 \n" | tee --append /etc/ld.so.conf.d/nvidia.conf
 
 ldconfig
@@ -79,7 +80,9 @@ Section "Files"
 EndSection
 EOF
 systemctl set-default multi-user.target
-echo "Pre install done.
+
+echo ""
+echo "Pre_install done.
 Reboot required.  Run this installer again and enter the \"i\" command."
 
 break
@@ -87,11 +90,11 @@ break
 
 elif [[ $REPLY == i ]];then
 [[ ! -e /var/lib/dkms ]] && mkdir -v /var/lib/dkms
-	
-	echo "Installing ...
-	This may take a minute or two...
-	
-	"
+clear
+echo ""
+echo "Installing ...
+This may take a minute or two...
+"	
 $nversion \
 --utility-prefix=/opt/nvidia \
 --opengl-prefix=/opt/nvidia \
