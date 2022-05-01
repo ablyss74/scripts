@@ -1,4 +1,9 @@
 # Installing Vmplayer 16.2.3* on CLear Linux
 
-# After installing the bundle, the modules will fail to load, but a work around is to use the following command.
+# Download link: https://www.vmware.com/go/getplayer-linux
+
+After install the bundle run the following command
+
 # sudo CPATH=/usr/lib64/gcc/x86_64-generic-linux/12/include vmware-modconfig --console --install-all
+
+# After a kernel update a reinstall may be required.
