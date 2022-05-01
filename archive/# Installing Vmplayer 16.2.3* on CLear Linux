@@ -2,8 +2,13 @@
 
 # Download link: https://www.vmware.com/go/getplayer-linux
 
-After install the bundle run the following command
+# During the install use /etc/init.d for script directory
 
-# sudo CPATH=/usr/lib64/gcc/x86_64-generic-linux/12/include vmware-modconfig --console --install-all
+# After install the bundle run the following command
+
+sudo CPATH=/usr/lib64/gcc/x86_64-generic-linux/12/include vmware-modconfig --console --install-all
+sudo /etc/init.d/vmware start
+vmplayer
+
 
 # After a kernel update a reinstall may be required.
