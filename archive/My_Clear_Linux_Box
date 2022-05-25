@@ -1,0 +1,6 @@
+### This will be a script to automate the setup of my Clear Linux Box
+
+swupd bundle-add dev-utils containers-basic mpg123 desktop-enlightenment
+curl -O https://github.com/ablyss74/scripts/blob/main/archive/Music%20Thingy/beta_music_thingy.bash
+curl -O https://download.nvidia.com/XFree86/Linux-x86_64/515.43.04/NVIDIA-Linux-x86_64-515.43.04-no-compat32.run
+curl -O https://raw.githubusercontent.com/ablyss74/scripts/main/archive/nvidia_clear_linux/Install_Nvidia
