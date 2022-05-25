@@ -14,6 +14,7 @@
 #flags="-v -v"
 #flags="-T 1"
 
+updatedb  ## This should only run once unless new stuff is added
 socat ${flags} TCP-LISTEN:1234,crlf,reuseaddr,fork SYSTEM:"
 echo HTTP/1.0 200
 echo Content-Type\: text/html; echo
