@@ -10,6 +10,7 @@ rpm -U --nodeps google-chrome*.rpm
 rm google-chrome*
 
 ln -s $HOmE $HOME/Desktop/Home
+ln -s $HOmE $HOME/Desktop-1/Home
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub io.mpv.Mpv
