@@ -9,6 +9,8 @@ rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
 rpm -U --nodeps google-chrome*.rpm
 rm google-chrome*
 
+ln -s $HOmE $HOME/Desktop/Home
+
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub io.mpv.Mpv
 flatpak install flathub com.obsproject.Studio
