@@ -15,6 +15,7 @@ ln -s $HOmE $HOME/Desktop-1/Home
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub io.mpv.Mpv
 flatpak install flathub com.obsproject.Studio
+flatpak install flathub net.sourceforge.projectM
 
 curl -O https://raw.githubusercontent.com/ablyss74/scripts/main/archive/Music%20Thingy/beta_music_thingy.bash
 curl -O https://download.nvidia.com/XFree86/Linux-x86_64/515.43.04/NVIDIA-Linux-x86_64-515.43.04-no-compat32.run
