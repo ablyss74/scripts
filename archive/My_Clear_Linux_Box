@@ -2,7 +2,12 @@
 
 systemctl set-default multi-user.target
 
-swupd bundle-add dev-utils containers-basic mpg123 desktop-enlightenment
+swupd bundle-add dev-utils containers-basic mpg123 desktop-enlightenment package-utils
+
+curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
+rpm -U --nodeps google-chrome*.rpm
+rm google-chrome*
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub io.mpv.Mpv
