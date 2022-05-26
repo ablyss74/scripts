@@ -110,7 +110,7 @@ if [[ $REPLY == a ]];then
 	pl="${playlist[$shuffle]}"
 	tr=(${pl//\\n/\/ })
 	tr=${tr[0]}
-	tmp=$(</tmp/music_thingy.info) ### Repeat the delete cmds so no duplicate entires
+	tmp=$(</tmp/music_thingy.info) ### Repeat the delete cmds so no duplicate entries 
 	foo=$(<$favs)
 	echo "${foo//"$tmp"}" | sed '/^$/d' > $favs				
 	fav=$(</tmp/music_thingy.info)
