@@ -22,7 +22,7 @@ cmake --build build
 cmake --install build
 
 # Set the system in realtime mode
-echo "-1" > /proc/sys/kernel/sched_rt_runtime_us
+echo -1 > /proc/sys/kernel/sched_rt_runtime_us
 # load kernel module snd_seq for midi mapping
 modprobe snd_seq
 # Tell qjackctl to use /usr/local/lib 
