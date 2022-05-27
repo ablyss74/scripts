@@ -3,9 +3,9 @@
 swupd bundle-add devpkg-gegl devpkg-libXfont2 kvm-host-dev devpkg-nettle  desktop-dev 
 
 export CMAKE_LIBRARY_PATH=$CMAKE_LIBRARY_PATH:/opt/nvidia/lib/
-mkdir host/build
-cd host/build
-cmake ..
+mkdir client/build
+cd client/build
+cmake ../
 make
 make install
 sudo chown ${USER}:qemu /usr/local/bin/looking-glass
