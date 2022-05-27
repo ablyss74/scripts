@@ -17,7 +17,7 @@ git clone --recursive https://github.com/obsproject/obs-studio.git
 # Enter obs-studio directory
 cd obs-studio
 
-# Build the obs dependenciee
+# Build the obs dependencies
 bash ./obs-studio/CL/linux/01_install_dependencies.sh
 
 export CMAKE_LIBRARY_PATH=$CMAKE_LIBRARY_PATH:/opt/nvidia/lib/:/usr/local/lib/
