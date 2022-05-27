@@ -22,8 +22,7 @@ bash ./obs-studio/CL/linux/01_install_dependencies.sh
 
 export CMAKE_LIBRARY_PATH=$CMAKE_LIBRARY_PATH:/opt/nvidia/lib/:/usr/local/lib/
 
-cmake -S . -B YOUR_BUILD_DIRECTORY -G Ninja     -DCEF_ROOT_DIR="../obs-build-dependencies/cef_binary_4638_linux64"     -DLINUX_PORTABLE=ON     -DENABLE_PIPEWIRE=OFF     -DENABLE_AJA=0 -DENABLE_JACK=ON cmake -S . -B YOUR_BUILD_DIRECTORY -G Ninja     -DCEF_ROOT_DIR="../obs-build-dependencies/cef_binary_4638_linux64"     -DLINUX_PORTABLE=ON   -DENABLE_PIPEWIRE=OFF     -DENABLE_AJA=0 -DENABLE_JACK=ON -DENABLE_HEVC=ON -DENABLE_VLC=OFF
-
+cmake -S . -B YOUR_BUILD_DIRECTORY -G Ninja -DCEF_ROOT_DIR="../obs-build-dependencies/cef_binary_4638_linux64" -DLINUX_PORTABLE=ON -DENABLE_PIPEWIRE=OFF -DENABLE_AJA=0 -DENABLE_JACK=ON -DENABLE_HEVC=ON -DENABLE_VLC=OFF
 cd obs-studio/YOUR_BUILD_DIRECTORY/install/bin/64bit/
 ./obs &
 
