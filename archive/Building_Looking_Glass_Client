@@ -6,6 +6,10 @@ cd host/build
 cmake ..
 make
 make install
-sudo chown ${USER}:qemu looking-glass
+sudo chown ${USER}:qemu /usr/local/bin/looking-glass
 sudo chmod 660 /dev/shm/looking-glass
+
+# Run
+VM="The name of the VM in virt-manager"
+looking-glass $VM
 
