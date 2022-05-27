@@ -1,3 +1,5 @@
+# Clear Linux Build Example for Looking Glass https://looking-glass.io/
+
 swupd bundle-add devpkg-gegl devpkg-libXfont2 kvm-host-dev devpkg-nettle  desktop-dev 
 
 export CMAKE_LIBRARY_PATH=$CMAKE_LIBRARY_PATH:/opt/nvidia/lib/
