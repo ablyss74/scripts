@@ -62,7 +62,7 @@ clr-boot-manager update
 
 mkdir /etc/modprobe.d
 
-printf "blacklist nouveau \noptions nouveau modeset=0 \nblacklist nividafb\n" | tee --append /etc/modprobe.d/disable-nouveau.conf
+printf "blacklist nouveau \noptions nouveau modeset=0 \nblacklist nvidiafb\n" | tee --append /etc/modprobe.d/disable-nouveau.conf
 
 echo "include /etc/ld.so.conf.d/*.conf" |  tee --append /etc/ld.so.conf
 
