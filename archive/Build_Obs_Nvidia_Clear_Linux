@@ -21,7 +21,7 @@ cd obs-studio
 bash ./obs-studio/CL/linux/01_install_dependencies.sh
 
 # Download the latest mbedtls @ https://github.com/Mbed-TLS/mbedtls/releases
-# cmake -B build, cmake --build build, cmake --install build 
+make && make install
 
 export CMAKE_LIBRARY_PATH=$CMAKE_LIBRARY_PATH:/opt/nvidia/lib/:/usr/local/lib/
 
