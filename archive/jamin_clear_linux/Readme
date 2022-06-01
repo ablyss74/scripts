@@ -1,6 +1,6 @@
 # Small little hack to get jamin running on Clear Linux with little damage.
 
-# Require jackd to be running
+# Requires jackd to be running
 
 # Copy or move ladspa to the "move_ladspa_here" folder if they do not already exist.
 
