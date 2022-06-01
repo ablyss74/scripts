@@ -6,6 +6,6 @@
 
 # Drag amd drop ladspa to the "move_ladspa_here" folder if they do not already exist. It's a symlink to /usr/local/lib
 
-# Double click the jamin icon or right click and rus as program.
+# Double click the jamin icon or right click and run as program.
 
 
