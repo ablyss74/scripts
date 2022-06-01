@@ -1,1 +1,13 @@
-https://github.com/projectM-visualizer/projectm/releases
+# Instructions borrowed from https://github.com/projectM-visualizer/projectm/blob/master/BUILDING.md
+
+
+git clone https://github.com/projectM-visualizer/projectm.git /path/to/local/repo
+cd /path/to/local/repo
+git fetch --all --tags
+
+
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local ..
+
+cmake --build . -- -j && sudo cmake --build . --target install 
