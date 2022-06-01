@@ -2,8 +2,10 @@
 
 # Require jackd to be running
 
-# Copy or move ladspa to the "move_ladspa_here" folder if they do not already exist.
+# Download jamin_clear_linux.tar.gz and tar xvf jamin_clear_linux.tar.gz
 
-# Double click the jamin icon or right click and rus as program.
+# Drage amd drp[ the ladspa folder to the "move_ladspa_here" folder if it does not already exist. It's a symlink to /usr/local/lib
+
+# Double click the jamin icon or right click and run as program.
 
 
