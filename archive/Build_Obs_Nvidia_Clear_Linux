@@ -39,7 +39,7 @@ cd obs-studio/YOUR_BUILD_DIRECTORY/install/bin/64bit/
 ./obs &
 
 # Some Minor Issues
-# # RTCP connect error: Seems to only happen on 1st try. 2d try connects
+# 1. RTCP connect error: Seems to only happen on 1st try. 2d try connects
 
 # obs erros that NVENC failed... then do this..
 # 1. Create a mp4 recording WITHOUT NVENC turned on but use the standard libx264 driver
