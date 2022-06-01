@@ -41,7 +41,7 @@ cd obs-studio/YOUR_BUILD_DIRECTORY/install/bin/64bit/
 # Some Minor Issues
 # 1. RTCP connect error: Seems to only happen on 1st try. 2d try connects
 
-# obs erros that NVENC failed... then do this..
+# obs might give error that NVENC failed... then try this..
 # 1. Create a mp4 recording WITHOUT NVENC turned on but use the standard libx264 driver
 # 2. /usr/local/bin/ffmpeg -y -i <file>.mp4 -vcodec h264_nvenc -b:v 5M -acodec copy test.mp4
 # 3. Then reset obs to use NVENC and try again.  
