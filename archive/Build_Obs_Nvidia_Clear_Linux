@@ -21,7 +21,10 @@ cd obs-studio
 bash ./obs-studio/CL/linux/01_install_dependencies.sh
 
 # Download the latest mbedtls @ https://github.com/Mbed-TLS/mbedtls/releases
-make && make install
+# If make fails with warning being treated as errors edit CmakeLists.txt and remove -Werror flag from "set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")"
+cmake -DUSE_SHARED_MBEDTLS_LIBRARY=On
+make -j4
+make install
 
 export CMAKE_LIBRARY_PATH=$CMAKE_LIBRARY_PATH:/opt/nvidia/lib/:/usr/local/lib/
 
