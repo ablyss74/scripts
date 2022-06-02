@@ -3,7 +3,7 @@
 
 
 ### Instructions borrowed from https://github.com/projectM-visualizer/projectm/blob/master/BUILDING.md
-
+```sh
 git clone https://github.com/projectM-visualizer/projectm.git
 cd projectm
 git fetch --all --tags
@@ -15,3 +15,4 @@ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local ..
 
 cmake --build . -- -j 
 cmake --build . --target install 
+```
