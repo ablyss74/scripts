@@ -12,7 +12,7 @@ swupd bundle-add curl c-basic qt5-dev devpkg-jack2 devpkg-jack2 os-utils-gui-dev
 
 # Build Jack
 curl -OL https://github.com/jackaudio/jack2/archive/v1.9.21.tar.gz
-# cd <jack build directory>
+cd <jack build directory>
 ./waf configure
 ./waf
 ./waf install
