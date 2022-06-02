@@ -1,4 +1,5 @@
 ```bash
+#!/bin/bash
 # Clear Linux Build Example for Looking Glass https://looking-glass.io/
 
 swupd bundle-add devpkg-gegl devpkg-libXfont2 kvm-host-dev devpkg-nettle desktop-dev 
