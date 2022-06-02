@@ -1,6 +1,6 @@
-```bash
-# Building qjackctl, jack, and rakarrack on Clear Linux
 
+### Building qjackctl, jack, and rakarrack on Clear Linux
+```bash
 # Optional method to test this is to run everything in docker.  But is not required. 
 # If testing in docker: 
 swupd bundle-add containers-basic && systemctl start docker.service && systemctl enable docker.service
