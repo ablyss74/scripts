@@ -1,0 +1,6 @@
+#!/bin/bash
+
+[[ ! -e ./LinuxNoEditor ]] && echo -e "Game Content not found.\\n\\nDid you download it?" && exit
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${PWD}/libs/
+cd ./LinuxNoEditor/Engine/Binaries/Linux
+./UE4-Linux-Shipping UnrealTournament -opengl4 -SaveToUserDir
