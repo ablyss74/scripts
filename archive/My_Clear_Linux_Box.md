@@ -4,6 +4,7 @@ systemctl set-default multi-user.target
 
 swupd bundle-add dev-utils containers-basic mpg123 desktop-enlightenment package-utils
 
+# Google code snippet from https://community.clearlinux.org/t/installing-google-chrome-on-clear-linux/1132
 curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
 rpm -U --nodeps google-chrome*.rpm
