@@ -3,9 +3,11 @@
 
 # Optional method to test this is to run everything in docker.  But is not required. 
 # If testing in docker: 
-# swupd bundle-add containers-basic && systemctl start docker.service && systemctl enable docker.service
-# Test in docker copy and paste the entire line and it will load up a docker shell when done.
-# echo -e 'FROM clearlinux:latest \nRUN swupd bundle-add curl c-basic qt5-dev devpkg-jack2 devpkg-jack2 os-utils-gui-dev' > /tmp/Dockerfile && docker build -t clearlinux:latest < /tmp/Dockerfile - && modprobe snd-seq && xhost local:${USER} && docker run -it --privileged -e JACK_NO_AUDIO_RESERVATION=1  --device /dev/snd -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native -v /dev/shm:/dev/shm:rw --net=host -e DISPLAY=${DISPLAY} clearlinux:latest
+swupd bundle-add containers-basic && systemctl start docker.service && systemctl enable docker.service
+
+# To test in docker copy and paste the entire line and it will load up a docker shell when done.
+# Then follow the steps below inside docker terminal.
+echo -e 'FROM clearlinux:latest \nRUN swupd bundle-add curl c-basic qt5-dev devpkg-jack2 devpkg-jack2 os-utils-gui-dev' > /tmp/Dockerfile && docker build -t clearlinux:latest < /tmp/Dockerfile - && modprobe snd-seq && xhost local:${USER} && docker run -it --privileged -e JACK_NO_AUDIO_RESERVATION=1  --device /dev/snd -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native -v /dev/shm:/dev/shm:rw --net=host -e DISPLAY=${DISPLAY} clearlinux:latest
 
 # If not using docker install the following
 swupd bundle-add curl c-basic qt5-dev devpkg-jack2 devpkg-jack2 os-utils-gui-dev
