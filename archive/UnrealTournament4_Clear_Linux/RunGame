@@ -1,6 +1,7 @@
 #!/bin/bash
 
-[[ ! -e ./LinuxNoEditor ]] && echo -e "Game Content not found.\\n\\nDid you download it?" && exit
+[[ ! -e ./LinuxNoEditor ]] && zenity --error --title="Uh Oh" --text="Game Content not found.\\n\\nDid you download it?" && exit
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${PWD}/libs/
 cd ./LinuxNoEditor/Engine/Binaries/Linux
+chmod +x ./UE4-Linux-Shipping UnrealTournament
 ./UE4-Linux-Shipping UnrealTournament -opengl4 -SaveToUserDir
