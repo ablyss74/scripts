@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 # Building obs with nvenc (Nvidia encode/decode) support and also jack support on Clear Linux
 
@@ -46,4 +47,4 @@ cd obs-studio/YOUR_BUILD_DIRECTORY/install/bin/64bit/
 # 1. Create a mp4 recording WITHOUT NVENC turned on but use the standard libx264 driver
 # 2. /usr/local/bin/ffmpeg -y -i <file>.mp4 -vcodec h264_nvenc -b:v 5M -acodec copy test.mp4
 # 3. Then reset obs to use NVENC and try again.  
-
+```
