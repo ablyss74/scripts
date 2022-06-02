@@ -1,8 +1,8 @@
-# This only installs the libs
-# See  [projectm_clear_linux](./projectm_clear_linux) for binaries.
+### This only installs the libs
+### See  [projectm_clear_linux](./projectm_clear_linux) for binaries.
 
 
-# Instructions borrowed from https://github.com/projectM-visualizer/projectm/blob/master/BUILDING.md
+### Instructions borrowed from https://github.com/projectM-visualizer/projectm/blob/master/BUILDING.md
 
 git clone https://github.com/projectM-visualizer/projectm.git
 cd projectm
