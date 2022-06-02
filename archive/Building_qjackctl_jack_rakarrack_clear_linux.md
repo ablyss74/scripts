@@ -12,14 +12,14 @@ swupd bundle-add curl c-basic qt5-dev devpkg-jack2 devpkg-jack2 os-utils-gui-dev
 
 # Build Jack
 curl -OL https://github.com/jackaudio/jack2/archive/v1.9.21.tar.gz
-cd <jack build directory>
+cd "<jack build directory>"
 ./waf configure
 ./waf
 ./waf install
 
 # Build Qjackctl
 git clone https://git.code.sf.net/p/qjackctl/code qjackctl-git
-cd <qjackctl build directory>
+cd "<qjackctl build directory>"
 cmake -B build
 cmake --build build
 cmake --install build
@@ -40,7 +40,7 @@ qjackctl
 
 #Buld rakarrack
 git clone git://rakarrack.git.sourceforge.net/gitroot/rakarrack/rakarrack
-cd <rakarrack build directory>
+cd "<rakarrack build directory>"
 ./autogen.sh
 ./configure
 make
