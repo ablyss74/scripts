@@ -12,7 +12,7 @@ echo -e 'FROM clearlinux:latest \nRUN swupd bundle-add curl c-basic qt5-dev devp
 ```Bash
 
 # Required bundles
-swupd bundle-add curl c-basic qt5-dev devpkg-jack2 devpkg-jack2 os-utils-gui-dev
+swupd bundle-add curl c-basic qt5-dev devpkg-jack2 os-utils-gui-dev
 
 # Build Jack
 git clone https://github.com/jackaudio/jack2.git jack-git
