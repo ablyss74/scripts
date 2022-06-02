@@ -11,15 +11,15 @@
 swupd bundle-add curl c-basic qt5-dev devpkg-jack2 devpkg-jack2 os-utils-gui-dev
 
 # Build Jack
-curl -OL https://github.com/jackaudio/jack2/archive/v1.9.21.tar.gz
-cd "<jack build directory>"
+git clone https://github.com/jackaudio/jack2.git jack-git
+cd jack-git
 ./waf configure
 ./waf
 ./waf install
 
 # Build Qjackctl
 git clone https://git.code.sf.net/p/qjackctl/code qjackctl-git
-cd "<qjackctl build directory>"
+cd qjackctl-git
 cmake -B build
 cmake --build build
 cmake --install build
@@ -28,7 +28,7 @@ cmake --install build
 echo -1 > /proc/sys/kernel/sched_rt_runtime_us
 # load kernel module snd_seq for midi mapping
 modprobe snd_seq
-# Tell qjackctl to use /usr/local/lib 
+# You might need to tell qjackctl to use /usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
 
 # Run 
@@ -39,8 +39,8 @@ qjackctl
 # Restart qjackctl
 
 #Buld rakarrack
-git clone git://rakarrack.git.sourceforge.net/gitroot/rakarrack/rakarrack
-cd "<rakarrack build directory>"
+git clone git://rakarrack.git.sourceforge.net/gitroot/rakarrack/rakarrack rakarrack-git
+cd rakarrack-git
 ./autogen.sh
 ./configure
 make
