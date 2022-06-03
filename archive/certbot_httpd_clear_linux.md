@@ -85,4 +85,4 @@ Ctrl key + z
 ```
 
 Check for node updates
-```bash npm update```
+```bash npm updates```
