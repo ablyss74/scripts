@@ -79,6 +79,10 @@ Run the httpd web server
 node node.js
 ```
 
+Test the webserver *Remember to use HTTPS and not HTTP*
+```bash
+http://clearlinuxbox.*mydomain*.com
+
 Stop the httpd web server
 ```bash
 ctrl key + c
