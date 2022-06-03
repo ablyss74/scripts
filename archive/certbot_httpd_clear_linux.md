@@ -3,7 +3,7 @@ Requirements
 ```txt
 Your Domain Registrar Co. needs a custom "A" record that points to your IPv4 IP
 
-Ideally, you'd create a subdomain "A" record e.g. clearlinuxbox.mydomain.com
+Ideally, you'd create a subdomain "A" record e.g. clearlinuxbox.*mydomain*.com
 
 I haven't tested this w/ IPv6 - sorry no help with that.
 ```
@@ -18,7 +18,7 @@ Create or edit /etc/hosts with your private LAN IP and then the qualified domain
 If you have more than one domain just use a comma and add the next
 e.g...
 ```bash
-192.168.0.15   clearlinuxbox.mydomain.com, somethingelse.mydomain.com
+192.168.0.15  clearlinuxbox.*mydomain*.com, someotherdomain.*mydomain*.com
 ```
 
 Run certbot
@@ -39,7 +39,7 @@ mkdir $HOME/public_html
 ```
 Create a file called node.js in the pubic_html folder and add the following
 
-Change *clearlinuxbox.mydomain.com* to your domain in all three lines.
+Change clearlinuxbox.\*mydomain\*.com to your domain in all three lines.
 
 ```js
 const express = require('express')
@@ -53,9 +53,9 @@ a
 https
   .createServer(
     {
-      key: fs.readFileSync('/etc/letsencrypt/live/clearlinuxbox.mydomain.com/privkey.pem'),
-      cert: fs.readFileSync('/etc/letsencrypt/live/clearlinuxbox.mydomain.com/fullchain.pem'),
-      ca: fs.readFileSync('/etc/letsencrypt/live/clearlinuxbox.mydomain.com/fullchain.pem'),
+      key: fs.readFileSync('/etc/letsencrypt/live/clearlinuxbox.*mydomain*.com/privkey.pem'),
+      cert: fs.readFileSync('/etc/letsencrypt/live/clearlinuxbox.*mydomain*.com/fullchain.pem'),
+      ca: fs.readFileSync('/etc/letsencrypt/live/clearlinuxbox.*mydomain*.com/fullchain.pem'),
     },
     app
   )
@@ -81,7 +81,7 @@ node node.js
 
 Test the webserver *Remember to use HTTPS and not HTTP*
 ```bash
-http://clearlinuxbox.*mydomain*.com
+https://clearlinuxbox.*mydomain*.com
 
 Stop the httpd web server
 ```bash
