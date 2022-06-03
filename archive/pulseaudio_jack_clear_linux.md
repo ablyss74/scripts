@@ -27,7 +27,7 @@ load-module module-jack-sink
 load-module module-jack-source
 
 # You can then start up your custom pulseaudio with jack with the following command.
-# From with the pulse-git directory type...
+# From within the pulse-git directory type...
 
 pulseaudio -k ; sleep 1s ; build/src/daemon/pulseaudio -D -n -F build/src/daemon/default.pa -p $(pwd)/build/src/modules/
 
