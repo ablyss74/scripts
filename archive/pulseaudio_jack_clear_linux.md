@@ -12,7 +12,6 @@
 # Anytime you want to update the source code without downloading the entire package just type "git pull"
 
 git clone git://anongit.freedesktop.org/pulseaudio/pulseaudio pulse-git
-
 cd pulse-git
 meson build
 meson compile -C build
