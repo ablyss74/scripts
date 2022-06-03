@@ -27,10 +27,8 @@ Follow the instructions and when prompted put in your domain name, not the IP
 ```bash
 certbot certonly --standalone
 ```
-```txt
-Note: certbot certs will expire -- I believe in 3 months is default.
-In which case you'd just rerun certbot certonly --standalone 
-```
+*Note: certbot certs will expire -- I believe in 3 months is default.
+In which case you'd just rerun certbot certonly --standalone*
 
 Turn off port 80 and turn on port 443 in router
 
