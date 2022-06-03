@@ -6,8 +6,6 @@ swupd bundle-add  letsencrypt-client
 Edit /etc/hosts with your qualified domain name
 If you have more than one domain just use a comma and add the next
 e.g...
-
-/etc/hosts
 ```bash
 192.168.0.15   mydomain.com, myotherdomain.com
 ```
