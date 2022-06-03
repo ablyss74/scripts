@@ -81,7 +81,8 @@ node node.js
 
 Test the webserver *Remember to use HTTPS and not HTTP*
 ```bash
-https://clearlinuxbox.*mydomain*.com
+firefox https://clearlinuxbox.*mydomain*.com
+```
 
 Stop the httpd web server
 ```bash
