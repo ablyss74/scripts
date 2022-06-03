@@ -19,17 +19,22 @@ meson compile -C build
 
 # Then open up the file default.pa with your text editor of choice.
 # It's located build/src/daemon/default.pa
+
 gnome-text-editor ./build/src/daemon/default.pa
 
 # Then add these two lines under the "Load audio drivers statically" to load jack with pulse
+
 load-module module-jack-sink
 load-module module-jack-source
 
 # You can then start up your custom pulseaudio with jack with the following command.
 # From with the pulse-git directory type...
+
 pulseaudio -k ; sleep 1s ; build/src/daemon/pulseaudio -D -n -F build/src/daemon/default.pa -p $(pwd)/build/src/modules/
 
 # When you are done testing you can stop the custom pulse and jack and restart the default pulseaudio like so...
+
 pkill jackd ; pulseaudio -k ; sleep 1s ; cd $HOME ; pulseaudio --start
+
 ```
 
