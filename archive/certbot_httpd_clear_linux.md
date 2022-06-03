@@ -1,4 +1,5 @@
 Temporarily open up port 80 on your router and point it to your LAN IP 
+
 Open up console and sudo the following
 ```bash
 swupd bundle-add  letsencrypt-client
@@ -12,6 +13,7 @@ e.g...
 ```
 
 Run certbot
+
 Follow the instructions and when prompted put in your domain name, not the IP
 ```bash
 certbot certonly --standalone
@@ -27,6 +29,7 @@ Create a httpd directory to host your website
 mkdir $HOME/public_html
 ```
 Create a file called node.js in the pubic_html folder and add the following
+
 Change mydomain.com to your domain in all three lines.
 
 ```js
