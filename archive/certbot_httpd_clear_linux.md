@@ -24,7 +24,7 @@ Follow the instructions and when prompted put in your domain name, not the IP
 ```bash
 certbot certonly --standalone
 ```
-Turn off port 80 and turn on port 443
+Turn off port 80 and turn on port 443 in router
 
 Install nodejs
 ```bash
