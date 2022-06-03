@@ -1,7 +1,7 @@
 ### Create a easy secure IPv4 HTTPD server on Clear Linux.
 Requirements
 ```txt
-Your Domain Registrar Co. needs a custom "A" record need to point to your IPv4 IP
+Your Domain Registrar Co. needs a custom "A" record that points to your IPv4 IP
 ```
 Temporarily open up port 80 on your router and point it to your LAN IP 
 
