@@ -1,4 +1,4 @@
-### Create a easy secure IPv4 HTTPD server on Clear Linux.
+### Create an easy secure IPv4 HTTPD server on Clear Linux.
 Requirements
 ```txt
 Your Domain Registrar Co. needs a custom "A" record that points to your IPv4 IP
