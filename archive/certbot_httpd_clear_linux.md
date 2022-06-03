@@ -86,7 +86,7 @@ firefox https://clearlinuxbox.*mydomain*.com
 
 Stop the httpd web server
 ```bash
-ctrl key + c
+ctrl_key + c
 ```
 
 Check for node updates
