@@ -24,6 +24,7 @@ e.g...
 Run certbot
 
 Follow the instructions and when prompted put in your domain name, not the IP
+
 *Note: certbot certs will expire -- I believe in 3 months is default.
 In which case you'd just rerun certbot certonly --standalone*
 ```bash
