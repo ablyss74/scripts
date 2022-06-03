@@ -79,3 +79,10 @@ Run the httpd web server
 node node.js
 ```
 
+Stop the httpd web server
+```bash
+Ctrl key + z
+```
+
+Check for node updates
+```bash npm update```
