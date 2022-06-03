@@ -3,7 +3,8 @@ Open up console and sudo the following
 ```bash
 swupd bundle-add  letsencrypt-client
 ```
-Edit /etc/hosts with your qualified domain name
+Edit /etc/hosts with your qualified domain name.
+
 If you have more than one domain just use a comma and add the next
 e.g...
 ```bash
