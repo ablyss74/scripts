@@ -215,7 +215,7 @@ while true
 		 ORANGE="$(tput setaf 9)" 
 		 BLACK="$(tput setaf 234)" 
 		 REPLY=${REPLY,,}		 
-		 favs="./.music_thingy_favorites.txt"
+		 favs="${HOME}/.music_thingy_favorites.txt"
 		 pids="$(ps -u | grep MuSiC-ThInGy-)"	 
 		 x=($(${player%} --version))
 		 [[ -z ${x[0]} ]] && echo -e "\\n${ORANGE}${player}${RED} not installed. ${BLUE}Please install it to play music :-)\\n" && break
