@@ -18,7 +18,7 @@ Create or edit /etc/hosts with your private LAN IP and then the qualified domain
 If you have more than one domain just use a comma and add the next
 e.g...
 ```bash
-192.168.0.15  clearlinuxbox.*mydomain*.com, someotherdomain.*mydomain*.com
+192.168.0.15  clearlinuxbox.*mydomain*.com, someothersubdomain.*mydomain*.com
 ```
 
 Run certbot
