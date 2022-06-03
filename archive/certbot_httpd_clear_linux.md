@@ -1,34 +1,34 @@
-# Temporarily open up port 80 on your router and point it to your LAN IP 
+## Temporarily open up port 80 on your router and point it to your LAN IP 
 
-# Open up console and sudo the following
+## Open up console and sudo the following
 ```bash
 swupd bundle-add  letsencrypt-client
 ```
-# Edit /etc/hosts with your qualified domain name
-# If you have more than one domain just use a comma and add the next
-# e.g...
+## Edit /etc/hosts with your qualified domain name
+## If you have more than one domain just use a comma and add the next
+## e.g...
 
-# /etc/hosts
+## /etc/hosts
 ```bash
 192.168.0.15   mydomain.com, myotherdomain.com
 ```
 
-# Run certbot
-# Follow the instructions and when prompted put in your domain name, not the IP 
+## Run certbot
+## Follow the instructions and when prompted put in your domain name, not the IP 
 certbot certonly --standalone
 
-# Turn off port 80 and turn on port 443
+## Turn off port 80 and turn on port 443
 
-# Install nodejs
+## Install nodejs
 ```bash
 swupd bundle-add  nodejs-basic
 ```
-# Create a httpd directory to host your website
+## Create a httpd directory to host your website
 ```bash
 mkdir $HOME/public_html
 ```
-# Create a file called node.js in the pubic_html folder and add the following
-# Change mydomain.com to your domain in all three lines.
+## Create a file called node.js in the pubic_html folder and add the following
+## Change mydomain.com to your domain in all three lines.
 
 ```js
 const express = require('express')
@@ -53,17 +53,17 @@ https
   })
 ```  
 
-# Create a file called index.html with some html code and put it in public_html
+## Create a file called index.html with some html code and put it in public_html
 ```html
 <h2>Hello World</h2>
 ```
 
-# Install node express module
+## Install node express module
 ```bash
 npm install express
 ```
 
-# Run the httpd web server
+## Run the httpd web server
 ```bash
 node node.js
 ```
