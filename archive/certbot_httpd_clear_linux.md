@@ -2,6 +2,9 @@
 Requirements
 ```txt
 Your Domain Registrar Co. needs a custom "A" record that points to your IPv4 IP
+
+Ideally, you'd create a subdomain "A" record e.g. clearlinuxbox.mydomain.com
+
 I haven't tested this w/ IPv6 - sorry no help with that.
 ```
 Temporarily open up port 80 on your router and point it to your LAN IP 
@@ -15,7 +18,7 @@ Edit /etc/hosts with your private LAN IP and then the qualified domain name.
 If you have more than one domain just use a comma and add the next
 e.g...
 ```bash
-192.168.0.15   mydomain.com, myotherdomain.com
+192.168.0.15   clearlinuxbox.mydomain.com, somethingelse.mydomain.com
 ```
 
 Run certbot
