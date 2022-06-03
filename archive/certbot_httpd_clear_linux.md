@@ -1,5 +1,5 @@
 ## Create an easy secure IPv4 HTTPD server on Clear Linux.
-### Requirements
+Requirements
 ```txt
 Your Domain Registrar Co. needs a custom "A" record that points to your IPv4
 
@@ -7,9 +7,9 @@ Ideally, you'd create a subdomain "A" record e.g. clearlinuxbox.*mydomain*.com
 
 I haven't tested this w/ IPv6 - sorry no help with that.
 ```
-### Temporarily open up port 80 on your router and point it to your LAN IP 
+Temporarily open up port 80 on your router and point it to your LAN IP 
 
-### Open up console and sudo the following
+Open up console and sudo the following
 ```bash
 swupd bundle-add  letsencrypt-client
 ```
