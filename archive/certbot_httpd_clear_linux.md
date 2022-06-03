@@ -81,7 +81,7 @@ node node.js
 
 Stop the httpd web server
 ```bash
-Ctrl key + z
+pkill node
 ```
 
 Check for node updates
