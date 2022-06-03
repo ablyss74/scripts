@@ -9,7 +9,8 @@
 
 # Then run the following commands
 # This will pull the latest pulseaudio into a folder called pulse-git
-# Anytime you want to update to the latest version without downloading the entire package just type "git pull"
+# Anytime you want to update the source code without downloading the entire package just type "git pull"
+
 git clone git://anongit.freedesktop.org/pulseaudio/pulseaudio pulse-git
 
 cd pulse-git
