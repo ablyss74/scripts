@@ -39,7 +39,7 @@ mkdir $HOME/public_html
 ```
 Create a file called node.js in the pubic_html folder and add the following
 
-Change clearlinuxbox.mydomain.com to your domain in all three lines.
+Change *clearlinuxbox.mydomain.com* to your domain in all three lines.
 
 ```js
 const express = require('express')
