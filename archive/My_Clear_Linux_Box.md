@@ -2,7 +2,7 @@
 ```bash
 systemctl set-default multi-user.target
 
-swupd bundle-add dev-utils containers-basic mpg123 desktop-enlightenment package-utils
+swupd bundle-add dev-utils containers-basic mpg123 package-utils
 
 # Google code snippet from https://community.clearlinux.org/t/installing-google-chrome-on-clear-linux/1132
 curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
