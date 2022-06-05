@@ -26,7 +26,8 @@ gnome-text-editor ./build/src/daemon/default.pa
 load-module module-jack-sink
 load-module module-jack-source
 
-# You can then start up your custom pulseaudio with jack with the following command.
+# You can then start up your custom pulseaudio following command.
+# I'd recommend first starting jackd with Qjackctl
 # From within the pulse-git directory type...
 
 pulseaudio -k ; sleep 1s ; build/src/daemon/pulseaudio -D -n -F build/src/daemon/default.pa -p $(pwd)/build/src/modules/
