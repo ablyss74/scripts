@@ -1,13 +1,13 @@
-```bash
-#!/bin/bash
+
 # Building obs with nvenc (Nvidia encode/decode) support and also jack support on Clear Linux
 
-# This will build a portable version of obs. Portable means "Use a portable directory structure to run OBS". Also -VLC supprot is off as it doesn't build yet on my Clear Linux system.
+This will build a portable version of obs. Portable means "Use a portable directory structure to run OBS". Also -VLC supprot is off as it doesn't build yet on my Clear Linux system.
 
 
-# 1. Build https://github.com/marioroy/ffmpeg-on-clear-linux
+1. Build https://github.com/marioroy/ffmpeg-on-clear-linux
 
-# 2. Proceed to build obs
+2. Proceed to build obs
+```bash
 sudo bash
 
 # Required bundles
