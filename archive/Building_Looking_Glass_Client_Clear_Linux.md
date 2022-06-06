@@ -10,7 +10,7 @@ cd client/build
 cmake ../
 make
 make install
-sudo chown ${USER}:qemu /usr/local/bin/looking-glass
+sudo chown ${USER}:qemu /usr/local/bin/looking-glass-client
 sudo chmod 660 /dev/shm/looking-glass
 
 # Run
