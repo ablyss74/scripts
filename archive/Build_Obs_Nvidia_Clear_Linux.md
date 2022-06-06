@@ -6,10 +6,8 @@ This will build a portable version of obs. Portable means "Use a portable direct
 
 1. Build https://github.com/marioroy/ffmpeg-on-clear-linux
 
-2. Proceed to build obs
+2. Proceed to build obs *sudo bash beforehand*
 ```bash
-sudo bash
-
 # Required bundles
 swupd bundle-add c-extras-gcc11 curl c-basic ccache devpkg-LuaJIT devpkg-jansson devpkg-libxkbcommon devpkg-curl devpkg-jack2 devpkg-pciutils devpkg-jack2 machine-learning-basic os-utils-gui-dev qt5-dev R-extras 
 
