@@ -1,0 +1,3 @@
+swupd bundle-add kde-frameworks5-dev
+git clone https://invent.kde.org/sdk/kdesrc-build
+./kdesrc-build --include-dependencies plasma-desktop
