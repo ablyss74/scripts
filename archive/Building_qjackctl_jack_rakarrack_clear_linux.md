@@ -42,7 +42,7 @@ qjackctl
 
 # Restart qjackctl
 
-#Buld rakarrack
+#Buld rakarrack ( open up a new terminal in your development folder )
 git clone git://rakarrack.git.sourceforge.net/gitroot/rakarrack/rakarrack rakarrack-git
 cd rakarrack-git
 ./autogen.sh
