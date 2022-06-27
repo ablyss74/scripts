@@ -30,7 +30,7 @@ cmake --install build
 
 # Set the system in realtime mode
 echo -1 > /proc/sys/kernel/sched_rt_runtime_us
-# load kernel module snd_seq for midi mapping
+# load kernel module snd_seq for midi mapping also required for rakarrack.
 modprobe snd_seq
 # You might need to tell qjackctl to use /usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
