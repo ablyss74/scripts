@@ -117,8 +117,8 @@ if [[ $REPLY == a ]];then
 	echo $fav >> $favs			
 fi
 if [[ $REPLY == l ]];then
-	echo -e "${BLUE}  ${RED}<Favorites>\\n${BLUE}$(<$favs)"
-	echo -e "${BLUE}  ${RED}</Favorites>\\n${BLUE}"
+	echo -e "${BLUE}  ${RED}<Favorites>\\n${BLUE}\\n$(<$favs)"
+	echo -e "$\\n{BLUE}  ${RED}</Favorites>\\n${BLUE}"
 	footer
 	return
 fi
