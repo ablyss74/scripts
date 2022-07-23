@@ -391,7 +391,7 @@ format=png
 		done	
 echo "</body></html>"
 }
-version2
+#version2
 
 
 #version1() {
